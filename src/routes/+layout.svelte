@@ -10,11 +10,12 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<meta name="theme-color" content="#071c16" />
+	<meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)" />
+	<meta name="theme-color" content="#071c16" media="(prefers-color-scheme: dark)" />
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-<ModeWatcher defaultMode="system" />
+<ModeWatcher defaultMode="light" />
 
 <a
 	href="#main"
@@ -24,10 +25,10 @@
 </a>
 
 <header
-	class="border-border/60 bg-background/90 sticky top-0 z-50 border-b backdrop-blur-md"
+	class="border-border/40 bg-background/80 sticky top-0 z-50 border-b backdrop-blur-md"
 >
 	<div
-		class="mx-auto flex min-h-17 w-[min(92%,90rem)] items-center justify-between gap-4"
+		class="mx-auto flex min-h-16 w-[min(92%,90rem)] items-center justify-between gap-4"
 	>
 		<a
 			href="{base}/"
@@ -39,14 +40,14 @@
 				alt=""
 				width="28"
 				height="28"
-				class="size-7 rounded-md"
+				class="size-7 rounded-xl"
 			/>
 			<span>cogon.studio</span>
 		</a>
 
 		<nav class="flex items-center gap-2" aria-label="Primary">
 			<Button
-				variant="outline"
+				variant="ghost"
 				size="sm"
 				class="rounded-full"
 				onclick={toggleMode}
@@ -64,10 +65,19 @@
 				href="https://github.com/cogon-studio"
 				target="_blank"
 				rel="noopener noreferrer"
+				variant="outline"
 				size="sm"
 				class="rounded-full"
 			>
 				GitHub
+			</Button>
+			<Button
+				href="mailto:hello@cogon.studio?subject=Project%20inquiry"
+				size="sm"
+				class="rounded-full bg-[var(--cogon-gold)] text-[var(--cogon-night)] hover:bg-[var(--cogon-gold)]/90"
+			>
+				<span class="hidden sm:inline">Start a project</span>
+				<span class="sm:hidden">Start</span>
 			</Button>
 		</nav>
 	</div>

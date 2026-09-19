@@ -10,17 +10,18 @@
 
 /* cogon.studio brand → shadcn semantic map */
 :root {
-	--background: #fff7d6;
+	/* Cooler ivory ground for breezy marketing surfaces; Soft Sun reserved for accents */
+	--background: #fffdf8;
 	--foreground: #12352c;
-	--card: #fffdf4;
+	--card: #ffffff;
 	--card-foreground: #12352c;
-	--popover: #fffdf4;
+	--popover: #ffffff;
 	--popover-foreground: #12352c;
 	--primary: #0b4a3b;
 	--primary-foreground: #fffdf4;
-	--secondary: #fff8e8;
+	--secondary: #f3faf6;
 	--secondary-foreground: #12352c;
-	--muted: #f5e9c0;
+	--muted: #eef6f1;
 	--muted-foreground: #3d5c52;
 	--accent: #e4b544;
 	--accent-foreground: #12352c;
