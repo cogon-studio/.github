@@ -13,12 +13,12 @@ Innovative enough to move ideas forward. Reliable enough to build on. Human enou
 
 ### Links
 
-- [Studio home](https://cogon-studio.github.io/.github/)
-- [Brand identity](https://cogon-studio.github.io/.github/brand/cogon-studio-brand-identity-guide.html)
+- [Studio home](https://cogon.studio/)
+- [Brand identity](https://cogon.studio/brand/cogon-studio-brand-identity-guide.html)
 - [Organization](https://github.com/cogon-studio)
 
 ---
 
 <p align="center">
-  <img src="https://cogon-studio.github.io/.github/brand/cogon-studio-square-dark.png" alt="cogon.studio mark" width="120" height="120" />
+  <img src="https://cogon.studio/brand/cogon-studio-square-dark.png" alt="cogon.studio mark" width="120" height="120" />
 </p>

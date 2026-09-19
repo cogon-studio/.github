@@ -34,7 +34,7 @@ Early studio; proof lives in public GitHub work and how tradeoffs are discussed 
 
 ## Constraints
 
-- Static GitHub Pages site (SvelteKit adapter-static)
+- Cloudflare Workers site (SvelteKit adapter-cloudflare)
 - Preserve factual copy and CTAs (email inquiry, GitHub)
 - Landing redesign may adopt breezy illustration-heavy SaaS layout language while keeping brand palette and voice
 

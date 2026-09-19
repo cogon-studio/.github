@@ -7,7 +7,7 @@ export const brandGuidelines = {
 	brand: 'cogon.studio',
 	organizationType: 'Software development studio',
 	tagline: 'Build boldly. Grow reliably.',
-	url: 'https://cogon-studio.github.io/.github/',
+	url: 'https://cogon.studio/',
 	contact: {
 		email: 'hello@cogon.studio',
 		github: 'https://github.com/cogon-studio'

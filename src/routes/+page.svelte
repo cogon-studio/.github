@@ -9,7 +9,7 @@
 	import Sprout from '@lucide/svelte/icons/sprout';
 	import Users from '@lucide/svelte/icons/users';
 
-	const siteUrl = 'https://cogon-studio.github.io/.github/';
+	const siteUrl = 'https://cogon.studio/';
 	const title = 'cogon.studio — Software Studio for Growing Teams';
 	const description =
 		'Software development studio for startups. Momentum without chaos—clear decisions, dependable delivery, and software designed to keep growing.';
