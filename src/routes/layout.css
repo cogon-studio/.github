@@ -1,0 +1,175 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn-svelte/tailwind.css';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* cogon.studio brand → shadcn semantic map */
+:root {
+	--background: #fff7d6;
+	--foreground: #12352c;
+	--card: #fffdf4;
+	--card-foreground: #12352c;
+	--popover: #fffdf4;
+	--popover-foreground: #12352c;
+	--primary: #0b4a3b;
+	--primary-foreground: #fffdf4;
+	--secondary: #fff8e8;
+	--secondary-foreground: #12352c;
+	--muted: #f5e9c0;
+	--muted-foreground: #3d5c52;
+	--accent: #e4b544;
+	--accent-foreground: #12352c;
+	--destructive: #b42318;
+	--border: color-mix(in srgb, #12352c 16%, transparent);
+	--input: color-mix(in srgb, #12352c 16%, transparent);
+	--ring: #5ccb91;
+	--chart-1: #0b4a3b;
+	--chart-2: #5ccb91;
+	--chart-3: #e4b544;
+	--chart-4: #071c16;
+	--chart-5: #12352c;
+	--radius: 0.875rem;
+	--sidebar: #fffdf4;
+	--sidebar-foreground: #12352c;
+	--sidebar-primary: #0b4a3b;
+	--sidebar-primary-foreground: #fffdf4;
+	--sidebar-accent: #f5e9c0;
+	--sidebar-accent-foreground: #12352c;
+	--sidebar-border: color-mix(in srgb, #12352c 16%, transparent);
+	--sidebar-ring: #5ccb91;
+
+	--cogon-night: #071c16;
+	--cogon-grove: #0e2a22;
+	--cogon-sprout: #5ccb91;
+	--cogon-gold: #e4b544;
+	--cogon-soft-sun: #fff7d6;
+	--cogon-cream: #fff8dc;
+	--cogon-mist: #b7c8be;
+	--cogon-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark {
+	--background: #071c16;
+	--foreground: #fff8dc;
+	--card: #0e2a22;
+	--card-foreground: #fff8dc;
+	--popover: #0e2a22;
+	--popover-foreground: #fff8dc;
+	--primary: #5ccb91;
+	--primary-foreground: #071c16;
+	--secondary: #14352b;
+	--secondary-foreground: #fff8dc;
+	--muted: #14352b;
+	--muted-foreground: #b7c8be;
+	--accent: #f0c85a;
+	--accent-foreground: #071c16;
+	--destructive: #f97066;
+	--border: color-mix(in srgb, #fff8dc 16%, transparent);
+	--input: color-mix(in srgb, #fff8dc 16%, transparent);
+	--ring: #f0c85a;
+	--chart-1: #5ccb91;
+	--chart-2: #f0c85a;
+	--chart-3: #fff8dc;
+	--chart-4: #0e2a22;
+	--chart-5: #b7c8be;
+	--sidebar: #0e2a22;
+	--sidebar-foreground: #fff8dc;
+	--sidebar-primary: #5ccb91;
+	--sidebar-primary-foreground: #071c16;
+	--sidebar-accent: #14352b;
+	--sidebar-accent-foreground: #fff8dc;
+	--sidebar-border: color-mix(in srgb, #fff8dc 16%, transparent);
+	--sidebar-ring: #f0c85a;
+	--cogon-gold: #f0c85a;
+}
+
+@theme inline {
+	--font-sans: 'Inter Variable', Inter, system-ui, sans-serif;
+	--font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
+	--color-sidebar-ring: var(--sidebar-ring);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar: var(--sidebar);
+	--color-chart-5: var(--chart-5);
+	--color-chart-4: var(--chart-4);
+	--color-chart-3: var(--chart-3);
+	--color-chart-2: var(--chart-2);
+	--color-chart-1: var(--chart-1);
+	--color-ring: var(--ring);
+	--color-input: var(--input);
+	--color-border: var(--border);
+	--color-destructive: var(--destructive);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-accent: var(--accent);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-muted: var(--muted);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary: var(--secondary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-primary: var(--primary);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-popover: var(--popover);
+	--color-card-foreground: var(--card-foreground);
+	--color-card: var(--card);
+	--color-foreground: var(--foreground);
+	--color-background: var(--background);
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-3xl: calc(var(--radius) * 2.2);
+	--radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+
+	html {
+		@apply font-sans scroll-smooth;
+		text-rendering: optimizeLegibility;
+	}
+
+	body {
+		@apply bg-background text-foreground antialiased;
+	}
+
+	:focus-visible {
+		outline: 3px solid var(--ring);
+		outline-offset: 4px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+}
+
+@utility font-display {
+	font-family: var(--font-display);
+}
+
+@utility font-mono {
+	font-family: var(--font-mono);
+}

@@ -1,0 +1,108 @@
+<script lang="ts">
+	import './layout.css';
+	import { base } from '$app/paths';
+	import { ModeWatcher, resetMode, toggleMode, mode } from 'mode-watcher';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import favicon from '$lib/assets/favicon.svg';
+
+	let { children } = $props();
+
+	const siteTitle = 'cogon.studio';
+	const siteDescription =
+		'Software development studio. Build boldly. Grow reliably.';
+</script>
+
+<svelte:head>
+	<link rel="icon" href={favicon} />
+	<meta name="description" content={siteDescription} />
+	<meta name="theme-color" content="#071c16" />
+	<meta property="og:title" content={siteTitle} />
+	<meta property="og:description" content={siteDescription} />
+	<meta property="og:type" content="website" />
+	<title>{siteTitle}</title>
+</svelte:head>
+
+<ModeWatcher defaultMode="system" />
+
+<a
+	href="#main"
+	class="bg-primary text-primary-foreground fixed top-3 left-3 z-100 -translate-y-[180%] rounded-md px-3 py-2 font-medium transition-transform focus:translate-y-0"
+>
+	Skip to content
+</a>
+
+<header
+	class="border-border/60 bg-background/90 sticky top-0 z-50 border-b backdrop-blur-md"
+>
+	<div
+		class="mx-auto flex min-h-17 w-[min(92%,90rem)] items-center justify-between gap-4"
+	>
+		<a
+			href="{base}/"
+			class="font-display text-foreground inline-flex items-center gap-2.5 text-lg font-bold tracking-tight no-underline"
+			aria-label="cogon.studio home"
+		>
+			<img
+				src="{base}/brand/cogon-studio-square-light.png"
+				alt=""
+				width="28"
+				height="28"
+				class="size-7"
+			/>
+			<span>cogon.studio</span>
+		</a>
+
+		<nav class="flex items-center gap-2" aria-label="Primary">
+			<a
+				href="{base}/brand/cogon-studio-brand-identity-guide.html"
+				class="text-muted-foreground hover:text-foreground inline-flex text-sm font-medium"
+			>
+				Brand
+			</a>
+			<Button
+				variant="outline"
+				size="sm"
+				class="rounded-full"
+				onclick={toggleMode}
+				aria-label={mode.current === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+			>
+				<span
+					class="bg-accent size-2 rounded-full shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent)_22%,transparent)]"
+					aria-hidden="true"
+				></span>
+				<span class="hidden sm:inline"
+					>{mode.current === 'dark' ? 'Light' : 'Dark'}</span
+				>
+			</Button>
+			<Button
+				href="https://github.com/cogon-studio"
+				target="_blank"
+				rel="noopener noreferrer"
+				size="sm"
+				class="rounded-full"
+			>
+				GitHub
+			</Button>
+		</nav>
+	</div>
+</header>
+
+<main id="main">
+	{@render children()}
+</main>
+
+<footer class="border-border mt-8 border-t">
+	<div
+		class="text-muted-foreground mx-auto flex w-[min(92%,90rem)] flex-col justify-between gap-3 py-8 text-sm sm:flex-row sm:items-center"
+	>
+		<span>cogon.studio · software development studio</span>
+		<span class="font-mono text-xs tracking-wide">Build boldly. Grow reliably.</span>
+		<button
+			type="button"
+			class="text-muted-foreground hover:text-foreground text-left text-xs underline-offset-4 hover:underline"
+			onclick={() => resetMode()}
+		>
+			System theme
+		</button>
+	</div>
+</footer>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cogon-studio.github.io/.github/
