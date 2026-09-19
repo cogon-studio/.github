@@ -19,27 +19,25 @@ This repository powers:
 ### Develop
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ### Build
 
 ```bash
 # Project Pages URL: https://cogon-studio.github.io/.github/
-npm run build
+pnpm build
 
 # Custom domain at the site root:
-BASE_PATH= npm run build
+BASE_PATH= pnpm build
 ```
 
-### Brand assets
+## Brand system (private)
 
-Served from [`static/brand/`](./static/brand/):
-
-- `cogon-studio-brand-identity-guide.html`
-- `cogon-brand-tokens.css`
-- Mark assets (`cogon-studio-square-light.png`, `cogon-studio-square-dark.png`)
+- `/brand-design` — identity landing + guide links (password form; SHA-256 hash compared client-side; no session persistence)
+- `/brand-design-json` and `/brand-design-json.json` — brief core guidelines JSON for AI agents (not linked from the public site)
+- Assets under [`static/brand/`](./static/brand/)
 
 ## Deploy
 

@@ -1,211 +1,255 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 	import { Button } from '$lib/components/ui/button/index.js';
-	import { Separator } from '$lib/components/ui/separator/index.js';
+	import { brandGuidelines } from '$lib/brand/guidelines.js';
 
-	const signals = ['innovative', 'reliable', 'youthful', 'warm'] as const;
+	const siteUrl = 'https://cogon-studio.github.io/.github/';
+	const title = 'cogon.studio — Software Studio for Growing Teams';
+	const description =
+		'Software development studio for startups. Momentum without chaos—clear decisions, dependable delivery, and software designed to keep growing.';
 
-	const pillars = [
-		{
-			title: 'Purpose',
-			body: 'Help ambitious teams turn useful ideas into software people trust and enjoy using.'
-		},
-		{
-			title: 'Positioning',
-			body: 'For startups and growing teams, cogon.studio blends fresh product thinking with disciplined engineering.'
-		},
-		{
-			title: 'Promise',
-			body: 'Momentum without chaos: clear decisions, dependable delivery, and software designed to keep growing.'
-		}
-	] as const;
+	const values = brandGuidelines.values;
 
-	const values = [
-		{ title: 'Curious by design', body: 'Ask better questions before writing code.' },
-		{ title: 'Reliable by default', body: 'Make quality, security, and follow-through visible.' },
-		{ title: 'Human in every detail', body: 'Communicate plainly; design for real people.' },
-		{ title: 'Grow together', body: 'Share context, teach openly, improve continuously.' }
-	] as const;
+	const jsonLd = {
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'Organization',
+				'@id': `${siteUrl}#organization`,
+				name: brandGuidelines.brand,
+				url: siteUrl,
+				email: brandGuidelines.contact.email,
+				sameAs: [brandGuidelines.contact.github],
+				description,
+				slogan: brandGuidelines.tagline,
+				logo: `${siteUrl}brand/cogon-studio-square-dark.png`
+			},
+			{
+				'@type': 'WebSite',
+				'@id': `${siteUrl}#website`,
+				url: siteUrl,
+				name: brandGuidelines.brand,
+				publisher: { '@id': `${siteUrl}#organization` },
+				description
+			}
+		]
+	};
 </script>
 
-<section class="hero relative overflow-hidden text-[var(--cogon-cream)]" aria-labelledby="brand-title">
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<meta
+		name="keywords"
+		content="software development studio, startup product engineering, MVP to production, dependable software delivery, product-minded engineering partner, growing team engineering partner, custom software for startups"
+	/>
+	<meta name="robots" content="index,follow" />
+	<link rel="canonical" href={siteUrl} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={siteUrl} />
+	<meta property="og:site_name" content="cogon.studio" />
+	<meta property="og:image" content="{siteUrl}brand/cogon-studio-square-dark.png" />
+	<meta property="og:image:alt" content="cogon.studio mark" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content="{siteUrl}brand/cogon-studio-square-dark.png" />
+	{@html `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`}
+</svelte:head>
+
+<!--
+THESIS: Public studio landing that sells dependable product momentum; keeps the brand manual off-stage.
+OWN-WORLD: Night Grove hero, Soft Sun body, Bricolage display, Harvest Gold CTA, official four-blade mark.
+STORY: Founder/eng lead recognizes a calm product-minded partner and emails to start.
+FIRST VIEWPORT: Full-bleed night; dominant mark; brand as hero text; one headline; one support; Start + GitHub.
+FORM: Brand-led studio landing · persuade · seed key seo-brief-2026-09
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+
+<section
+	class="relative overflow-hidden bg-[var(--cogon-night)] text-[var(--cogon-cream)]"
+	aria-labelledby="home-brand"
+>
 	<div
 		class="pointer-events-none absolute -right-40 -bottom-72 size-160 rounded-full bg-[color-mix(in_srgb,#5ccb91_10%,transparent)]"
 		aria-hidden="true"
 	></div>
 
 	<div
-		class="relative z-1 mx-auto grid min-h-[min(48rem,calc(100svh-4.25rem))] w-[min(92%,90rem)] items-center gap-10 py-16 md:grid-cols-[minmax(15rem,0.8fr)_minmax(22rem,1.2fr)] md:gap-16 lg:gap-24 lg:py-24"
+		class="relative z-1 mx-auto grid min-h-[min(48rem,calc(100svh-4.25rem))] w-[min(92%,90rem)] items-center gap-10 py-16 md:grid-cols-[minmax(15rem,0.85fr)_minmax(22rem,1.15fr)] md:gap-16 lg:gap-24 lg:py-24"
 	>
 		<img
-			class="hero-mark w-full max-w-md justify-self-center rounded-[1.75rem] shadow-[0_2.5rem_6rem_rgb(0_0_0_/_24%)] md:justify-self-start"
+			class="home-mark w-full max-w-md justify-self-center rounded-[1.75rem] shadow-[0_2.5rem_6rem_rgb(0_0_0_/_24%)] md:justify-self-start"
 			src="{base}/brand/cogon-studio-square-dark.png"
-			alt="cogon.studio four-blade symbol in green and gold"
+			alt=""
 			width="448"
 			height="448"
+			fetchpriority="high"
 		/>
 
-		<div class="hero-copy">
-			<p class="font-mono text-[clamp(0.75rem,1.2vw,0.9rem)] tracking-[0.06em] text-[var(--cogon-sprout)]">
-				SOFTWARE DEVELOPMENT STUDIO
-			</p>
+		<div class="home-copy">
 			<h1
-				id="brand-title"
-				class="font-display mt-4 max-w-[11ch] text-[clamp(3.5rem,8vw,7rem)] leading-[0.94] font-bold tracking-[-0.04em] text-balance"
+				id="home-brand"
+				class="font-display max-w-[11ch] text-[clamp(3.5rem,8vw,7rem)] leading-[0.94] font-bold tracking-[-0.04em] text-balance"
 			>
 				cogon.studio
 			</h1>
 			<p
-				class="mt-8 max-w-xl text-[clamp(1.05rem,1.6vw,1.35rem)] leading-relaxed text-[var(--cogon-mist)]"
+				class="font-display mt-6 max-w-[14ch] text-[clamp(1.85rem,4vw,3.25rem)] leading-[1.05] font-semibold tracking-[-0.03em] text-balance"
 			>
-				Build boldly. Grow reliably. Innovative enough to move ideas forward. Reliable enough to
-				build on. Human enough to enjoy working with.
+				Momentum without chaos.
+			</p>
+			<p
+				class="mt-6 max-w-xl text-[clamp(1.05rem,1.6vw,1.3rem)] leading-relaxed text-[var(--cogon-mist)]"
+			>
+				Fresh product thinking and disciplined engineering for startups that need to ship—and keep
+				growing. {brandGuidelines.tagline}
 			</p>
 
 			<div class="mt-9 flex flex-wrap gap-3">
 				<Button
-					href="mailto:hello@cogon.studio"
+					href="mailto:{brandGuidelines.contact.email}?subject=Project%20inquiry"
 					size="lg"
 					class="rounded-full bg-[var(--cogon-gold)] px-5 text-[var(--cogon-night)] hover:bg-[var(--cogon-gold)]/90"
 				>
 					Start a project
 				</Button>
 				<Button
-					href="{base}/brand/cogon-studio-brand-identity-guide.html"
+					href={brandGuidelines.contact.github}
+					target="_blank"
+					rel="noopener noreferrer"
 					variant="outline"
 					size="lg"
 					class="rounded-full border-[color-mix(in_srgb,#fff8dc_24%,transparent)] bg-[var(--cogon-grove)] text-[var(--cogon-cream)] hover:bg-[var(--cogon-grove)]/80 hover:text-[var(--cogon-cream)]"
 				>
-					Brand system
+					View on GitHub
 				</Button>
 			</div>
-
-			<ul class="mt-9 flex list-none flex-wrap gap-2.5 p-0" aria-label="Brand characteristics">
-				{#each signals as signal, i}
-					<li
-						class="font-mono rounded-full px-3 py-2 text-[0.72rem] {i === 2
-							? 'bg-[var(--cogon-gold)] text-[var(--cogon-night)]'
-							: 'bg-[var(--cogon-grove)] text-[var(--cogon-cream)]'}"
-					>
-						{signal}
-					</li>
-				{/each}
-			</ul>
 		</div>
 	</div>
 </section>
 
-<section class="mx-auto w-[min(92%,72rem)] py-20 md:py-28" aria-labelledby="promise-title">
+<section class="mx-auto w-[min(92%,72rem)] py-20 md:py-28" aria-labelledby="for-title">
 	<h2
-		id="promise-title"
-		class="font-display max-w-[18ch] text-[clamp(2.5rem,5.5vw,5.25rem)] leading-[0.98] font-bold tracking-[-0.035em] text-balance"
+		id="for-title"
+		class="font-display max-w-[16ch] text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] font-bold tracking-[-0.035em] text-balance"
 	>
-		A studio built for forward motion
+		Built for startups and growing teams
 	</h2>
-	<p class="text-muted-foreground mt-6 max-w-[66ch] text-[clamp(1.05rem,1.5vw,1.25rem)]">
-		cogon.studio gives ambitious teams the momentum to turn useful ideas into dependable software.
+	<p class="text-muted-foreground mt-6 max-w-[62ch] text-[clamp(1.05rem,1.5vw,1.25rem)]">
+		Founders and eng leads who need a product-minded studio partner—not freelancers who disappear,
+		not agencies that drown you in process. We help you move from a fuzzy idea or fragile MVP to
+		software that ships on schedule and stays maintainable.
 	</p>
-	<p
-		class="font-display border-border mt-10 max-w-[28ch] border-y py-8 text-[clamp(1.8rem,3.5vw,3.5rem)] leading-[1.08] font-semibold tracking-[-0.03em] text-balance md:max-w-none"
-	>
-		Fresh product thinking, <strong class="text-primary">disciplined engineering</strong>, and a
-		working relationship that stays clear from first decision to final delivery.
-	</p>
-
-	<div class="border-border mt-16 grid gap-px border-y bg-[var(--border)] md:grid-cols-3">
-		{#each pillars as pillar}
-			<article class="bg-background px-0 py-8 md:px-8">
-				<h3 class="font-display text-xl leading-tight">{pillar.title}</h3>
-				<p class="text-muted-foreground mt-3">{pillar.body}</p>
-			</article>
-		{/each}
-	</div>
 </section>
 
-<section class="bg-[var(--cogon-night)] text-[var(--cogon-cream)]" aria-labelledby="values-title">
+<section class="bg-[var(--cogon-night)] text-[var(--cogon-cream)]" aria-labelledby="how-title">
 	<div class="mx-auto w-[min(92%,72rem)] py-20 md:py-28">
 		<h2
-			id="values-title"
-			class="font-display max-w-[16ch] text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.98] font-bold tracking-[-0.035em] text-balance"
+			id="how-title"
+			class="font-display max-w-[16ch] text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] font-bold tracking-[-0.035em] text-balance"
 		>
-			Clear, warm, capable
+			Clear decisions. Dependable delivery.
 		</h2>
-		<p class="mt-6 max-w-[66ch] text-[clamp(1.05rem,1.5vw,1.25rem)] text-[var(--cogon-mist)]">
-			The voice stays consistent while the work stays grounded. Friendly does not mean vague, and
-			technical does not mean cold.
+		<p class="mt-6 max-w-[60ch] text-[clamp(1.05rem,1.5vw,1.2rem)] text-[var(--cogon-mist)]">
+			We start with better questions, then build with quality and follow-through you can see. The
+			handoff is growth-ready code and shared context—so the product can keep moving after launch.
 		</p>
-
-		<dl class="mt-14 grid gap-10 sm:grid-cols-2 sm:gap-x-16">
-			{#each values as value}
-				<div class="relative pl-8">
-					<span
-						class="absolute top-1.5 left-0 size-3 rounded-full bg-[var(--cogon-gold)]"
-						aria-hidden="true"
-					></span>
-					<dt class="font-display text-xl">{value.title}</dt>
-					<dd class="mt-2 text-[var(--cogon-mist)]">{value.body}</dd>
-				</div>
-			{/each}
-		</dl>
+		<blockquote
+			class="font-display mt-12 max-w-[30ch] text-[clamp(1.45rem,2.8vw,2.35rem)] leading-[1.2] font-semibold tracking-[-0.02em]"
+		>
+			“Here is what we know, what is uncertain, and the next useful step.”
+		</blockquote>
 	</div>
 </section>
 
-<section class="mx-auto w-[min(92%,72rem)] py-20 md:py-28" aria-labelledby="close-title">
-	<p class="font-mono text-muted-foreground text-xs tracking-[0.08em] uppercase">Next step</p>
+<section class="mx-auto w-[min(92%,72rem)] py-20 md:py-28" aria-labelledby="values-title">
 	<h2
-		id="close-title"
-		class="font-display mt-4 max-w-[14ch] text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] font-bold tracking-[-0.035em] text-balance"
+		id="values-title"
+		class="font-display max-w-[12ch] text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] font-bold tracking-[-0.035em] text-balance"
 	>
-		Engineering with momentum
+		How we show up
 	</h2>
-	<p class="text-muted-foreground mt-6 max-w-[48ch] text-lg">
-		Modern product thinking with reliable systems underneath. Tell us what you are building.
-	</p>
+	<ul class="mt-12 max-w-[58ch] list-none space-y-8 p-0">
+		{#each values as value}
+			<li class="border-border border-b pb-8">
+				<p class="font-display text-xl">{value.name}</p>
+				<p class="text-muted-foreground mt-2">{value.detail}</p>
+			</li>
+		{/each}
+	</ul>
+</section>
 
+<section class="bg-[var(--cogon-night)] text-[var(--cogon-cream)]" aria-labelledby="open-title">
+	<div class="mx-auto w-[min(92%,72rem)] py-20 md:py-28">
+		<h2
+			id="open-title"
+			class="font-display max-w-[12ch] text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] font-bold tracking-[-0.035em] text-balance"
+		>
+			See how we build
+		</h2>
+		<p class="mt-6 max-w-[56ch] text-[clamp(1.05rem,1.5vw,1.2rem)] text-[var(--cogon-mist)]">
+			We’re an early studio. Proof lives in public work and how we talk about tradeoffs—not invented
+			logos or vanity metrics. Browse the org, then tell us what you’re building.
+		</p>
+		<div class="mt-10">
+			<Button
+				href={brandGuidelines.contact.github}
+				target="_blank"
+				rel="noopener noreferrer"
+				size="lg"
+				class="rounded-full bg-[var(--cogon-gold)] px-5 text-[var(--cogon-night)] hover:bg-[var(--cogon-gold)]/90"
+			>
+				View on GitHub
+			</Button>
+		</div>
+	</div>
+</section>
+
+<section class="mx-auto w-[min(92%,72rem)] py-20 md:py-28" aria-labelledby="contact-title">
+	<h2
+		id="contact-title"
+		class="font-display max-w-[14ch] text-[clamp(2.5rem,5vw,4.5rem)] leading-[0.98] font-bold tracking-[-0.035em] text-balance"
+	>
+		Start a conversation
+	</h2>
+	<p class="text-muted-foreground mt-6 max-w-[52ch] text-lg">
+		Email with the problem, stage, and timeline. We’ll reply with what we know, what’s uncertain, and
+		a useful next step.
+	</p>
 	<div class="mt-10 flex flex-wrap gap-3">
-		<Button href="mailto:hello@cogon.studio" size="lg" class="rounded-full px-5">
-			Email the studio
+		<Button
+			href="mailto:{brandGuidelines.contact.email}?subject=Project%20inquiry"
+			size="lg"
+			class="rounded-full px-5"
+		>
+			Start a project
 		</Button>
 		<Button
-			href="https://github.com/cogon-studio"
+			href={brandGuidelines.contact.github}
 			target="_blank"
 			rel="noopener noreferrer"
 			variant="outline"
 			size="lg"
 			class="rounded-full"
 		>
-			See our GitHub
+			View on GitHub
 		</Button>
 	</div>
-
-	<Separator class="my-14" />
-
-	<p class="text-muted-foreground max-w-[55ch] text-sm leading-relaxed">
-		Identity, tokens, and usage live in the
-		<a
-			class="text-primary font-medium underline-offset-4 hover:underline"
-			href="{base}/brand/cogon-studio-brand-identity-guide.html"
-		>
-			brand identity guide
-		</a>
-		— including Soft Sun / Night Grove themes, Bricolage · Inter · JetBrains Mono, and CSS tokens.
-	</p>
 </section>
 
 <style>
-	.hero {
-		background: var(--cogon-night);
-	}
-
-	.hero-mark {
+	.home-mark {
 		aspect-ratio: 1;
 		object-fit: cover;
 		clip-path: inset(0 0 0 0 round 1.75rem);
-		animation: mark-reveal 900ms var(--cogon-ease) both;
+		animation: mark-reveal 900ms var(--cogon-ease, cubic-bezier(0.22, 1, 0.36, 1)) both;
 	}
 
-	.hero-copy {
-		animation: copy-rise 700ms var(--cogon-ease) 120ms both;
+	.home-copy {
+		animation: copy-rise 700ms var(--cogon-ease, cubic-bezier(0.22, 1, 0.36, 1)) 120ms both;
 	}
 
 	@keyframes mark-reveal {
@@ -235,7 +279,7 @@
 	}
 
 	@media (max-width: 52rem) {
-		.hero-mark {
+		.home-mark {
 			width: min(66vw, 19rem);
 		}
 	}

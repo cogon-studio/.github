@@ -6,20 +6,12 @@
 	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
-
-	const siteTitle = 'cogon.studio';
-	const siteDescription =
-		'Software development studio. Build boldly. Grow reliably.';
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<meta name="description" content={siteDescription} />
 	<meta name="theme-color" content="#071c16" />
-	<meta property="og:title" content={siteTitle} />
-	<meta property="og:description" content={siteDescription} />
 	<meta property="og:type" content="website" />
-	<title>{siteTitle}</title>
 </svelte:head>
 
 <ModeWatcher defaultMode="system" />
@@ -47,18 +39,12 @@
 				alt=""
 				width="28"
 				height="28"
-				class="size-7"
+				class="size-7 rounded-md"
 			/>
 			<span>cogon.studio</span>
 		</a>
 
 		<nav class="flex items-center gap-2" aria-label="Primary">
-			<a
-				href="{base}/brand/cogon-studio-brand-identity-guide.html"
-				class="text-muted-foreground hover:text-foreground inline-flex text-sm font-medium"
-			>
-				Brand
-			</a>
 			<Button
 				variant="outline"
 				size="sm"
