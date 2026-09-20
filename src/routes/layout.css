@@ -177,3 +177,94 @@
 @utility font-mono {
 	font-family: var(--font-mono);
 }
+
+#initial-splash {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: none;
+	place-items: center;
+	align-content: center;
+	gap: 1.25rem;
+	background:
+		radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--cogon-sprout) 16%, transparent), transparent 34%),
+		var(--background);
+	color: var(--foreground);
+	opacity: 1;
+	transition: opacity 260ms var(--cogon-ease);
+}
+
+html[data-splash='active'],
+html[data-splash='releasing'] {
+	overflow: hidden;
+}
+
+html[data-splash='active'] #app-shell,
+html[data-splash='releasing'] #app-shell {
+	visibility: hidden;
+}
+
+html[data-splash='active'] #initial-splash,
+html[data-splash='releasing'] #initial-splash {
+	display: grid;
+}
+
+html[data-splash='releasing'] #initial-splash {
+	opacity: 0;
+}
+
+.splash-logo {
+	position: relative;
+	display: grid;
+	width: 7rem;
+	height: 7rem;
+	place-items: center;
+	animation: splash-float 1.8s var(--cogon-ease) infinite alternate;
+}
+
+.splash-logo img {
+	position: relative;
+	z-index: 1;
+	width: 5.25rem;
+	height: 5.25rem;
+	object-fit: contain;
+	filter: drop-shadow(0 1rem 1.5rem color-mix(in srgb, var(--cogon-forest) 24%, transparent));
+}
+
+.splash-logo__orbit {
+	position: absolute;
+	inset: 0;
+	border: 2px solid color-mix(in srgb, var(--cogon-sprout) 36%, transparent);
+	border-top-color: var(--cogon-gold);
+	border-radius: 999px;
+	animation: splash-orbit 1.6s linear infinite;
+}
+
+#initial-splash p {
+	font-family: var(--font-display);
+	font-size: 0.875rem;
+	font-weight: 650;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+@keyframes splash-orbit {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes splash-float {
+	to {
+		transform: translateY(-0.4rem) scale(1.025);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#initial-splash,
+	.splash-logo,
+	.splash-logo__orbit {
+		animation: none;
+		transition: none;
+	}
+}

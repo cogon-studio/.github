@@ -4,6 +4,95 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="color-scheme" content="light dark" />
+		<script data-initial-load>
+			(() => {
+				const root = document.documentElement;
+				const modeKey = 'mode-watcher-mode';
+				const splashKey = 'cogon-splash-complete';
+				const minimumMs = 1400;
+				const maximumMs = 8000;
+				const fadeMs = 260;
+				let storedMode = 'system';
+
+				try {
+					const candidate = localStorage.getItem(modeKey);
+					if (candidate === 'light' || candidate === 'dark' || candidate === 'system') {
+						storedMode = candidate;
+					}
+				} catch {}
+
+				const isDark =
+					storedMode === 'dark' ||
+					(storedMode === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+				root.classList.toggle('dark', isDark);
+				root.style.colorScheme = isDark ? 'dark' : 'light';
+
+				try {
+					localStorage.setItem(modeKey, storedMode);
+				} catch {}
+
+				let shouldShowSplash = true;
+				try {
+					shouldShowSplash = sessionStorage.getItem(splashKey) !== 'true';
+				} catch {}
+
+				root.dataset.splash = shouldShowSplash ? 'active' : 'done';
+
+				const syncAccessibility = () => {
+					const active = root.dataset.splash === 'active' || root.dataset.splash === 'releasing';
+					const shell = document.getElementById('app-shell');
+					const splash = document.getElementById('initial-splash');
+					if (shell) {
+						shell.inert = active;
+						if (active) shell.setAttribute('aria-hidden', 'true');
+						else shell.removeAttribute('aria-hidden');
+					}
+					if (splash) splash.setAttribute('aria-hidden', active ? 'false' : 'true');
+				};
+
+				window.__cogonSyncSplash = syncAccessibility;
+
+				if (!shouldShowSplash) {
+					window.__cogonReleaseSplash = () => {};
+					return;
+				}
+
+				const startedAt = performance.now();
+				let releaseTimer;
+				let finished = false;
+
+				const finish = (forced = false) => {
+					if (finished) return;
+					finished = true;
+					if (releaseTimer) clearTimeout(releaseTimer);
+					try {
+						sessionStorage.setItem(splashKey, 'true');
+					} catch {}
+
+					const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+					if (forced || reduceMotion) {
+						root.dataset.splash = 'done';
+						syncAccessibility();
+						return;
+					}
+
+					root.dataset.splash = 'releasing';
+					syncAccessibility();
+					setTimeout(() => {
+						root.dataset.splash = 'done';
+						syncAccessibility();
+					}, fadeMs);
+				};
+
+				window.__cogonReleaseSplash = () => {
+					const remaining = minimumMs - (performance.now() - startedAt);
+					if (remaining > 0) releaseTimer = setTimeout(() => finish(), remaining);
+					else finish();
+				};
+
+				setTimeout(() => finish(true), maximumMs);
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
@@ -15,6 +104,16 @@
 		FORM: Lyara-style breezy SaaS layout · persuade · seed key pinned-lyara-breezy-2026-09
 		FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
 		-->
-		<div style="display: contents">%sveltekit.body%</div>
+		<div id="app-shell" style="display: contents" inert aria-hidden="true">%sveltekit.body%</div>
+		<div id="initial-splash" role="status" aria-live="polite" aria-label="Loading cogon.studio">
+			<div class="splash-logo" aria-hidden="true">
+				<span class="splash-logo__orbit"></span>
+				<img src="/brand/cogon-studio-mark-transparent.png" alt="" width="112" height="112" />
+			</div>
+			<p>Growing something good</p>
+		</div>
+		<script>
+			window.__cogonSyncSplash?.();
+		</script>
 	</body>
 </html>

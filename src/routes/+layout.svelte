@@ -2,6 +2,7 @@
 	import './layout.css';
 	import { base } from '$app/paths';
 	import { ModeWatcher, toggleMode, mode } from 'mode-watcher';
+	import { onMount } from 'svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { brandGuidelines } from '$lib/brand/guidelines.js';
 	import { GithubLogoIcon, MoonIcon, SunIcon } from 'phosphor-svelte';
@@ -13,6 +14,10 @@
 	function updateHeader() {
 		hasScrolled = window.scrollY > 8;
 	}
+
+	onMount(() => {
+		window.__cogonReleaseSplash?.();
+	});
 </script>
 
 <svelte:head>
@@ -22,7 +27,7 @@
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-<ModeWatcher defaultMode="system" />
+<ModeWatcher defaultMode="system" disableHeadScriptInjection />
 <svelte:window onscroll={updateHeader} />
 
 <a
