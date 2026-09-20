@@ -46,10 +46,13 @@
 
 	--cogon-night: #071c16;
 	--cogon-grove: #0e2a22;
+	--cogon-forest: #0b4a3b;
+	--cogon-ink: #12352c;
 	--cogon-sprout: #5ccb91;
 	--cogon-gold: #e4b544;
 	--cogon-soft-sun: #fff7d6;
 	--cogon-cream: #fff8dc;
+	--cogon-ivory: #fffdf4;
 	--cogon-mist: #b7c8be;
 	--cogon-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }

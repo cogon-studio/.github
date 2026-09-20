@@ -15,6 +15,14 @@ Breezy illustrated studio landing. Soft ivory fields, Night Grove accents (fores
 - **Sections:** Integrated pillars (3 illustrated tiles) → capability grid (2×2) → values with illustration → FAQ accordion → illustrated CTA panel
 - **Motion:** Soft float on hero illustration and chips; doodle bob; reduced-motion respected
 
+### Brand system (`src/routes/brand-identity/+page.svelte`)
+
+- **Mode:** Read
+- **World:** Night Grove documentation canvas with numbered sections, fine rules, large type specimens, and dense token swatches
+- **First viewport:** Full-height brand-system statement followed by a concise source-of-truth description
+- **Sections:** Logo specimens → typography scale → core palette and themes → voice principles and examples
+- **Constraint:** This route remains intentionally dark so light and dark brand specimens can be compared on one stable canvas
+
 ## Tokens
 
 Inherited from `layout.css` / brand guidelines, with light marketing ground cooled toward ivory (`#fffdf8`) and white cards. Dark theme remains Night Grove.
