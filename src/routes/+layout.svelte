@@ -1,11 +1,17 @@
 <script lang="ts">
 	import './layout.css';
 	import { base } from '$app/paths';
-	import { ModeWatcher, resetMode, toggleMode, mode } from 'mode-watcher';
+	import { ModeWatcher, toggleMode, mode } from 'mode-watcher';
 	import { Button } from '$lib/components/ui/button/index.js';
+	import { GithubLogoIcon, MoonIcon, SunIcon } from 'phosphor-svelte';
 	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
+	let hasScrolled = $state(false);
+
+	function updateHeader() {
+		hasScrolled = window.scrollY > 8;
+	}
 </script>
 
 <svelte:head>
@@ -15,7 +21,8 @@
 	<meta property="og:type" content="website" />
 </svelte:head>
 
-<ModeWatcher defaultMode="light" />
+<ModeWatcher defaultMode="system" />
+<svelte:window onscroll={updateHeader} />
 
 <a
 	href="#main"
@@ -25,7 +32,7 @@
 </a>
 
 <header
-	class="border-border/40 bg-background/80 sticky top-0 z-50 border-b backdrop-blur-md"
+	class={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300 ${hasScrolled ? 'border-border/40 bg-background/80 backdrop-blur-md' : 'border-transparent bg-transparent'}`}
 >
 	<div
 		class="mx-auto flex min-h-16 w-[min(92%,90rem)] items-center justify-between gap-4"
@@ -36,11 +43,11 @@
 			aria-label="cogon.studio home"
 		>
 			<img
-				src="{base}/brand/cogon-studio-square-light.png"
+				src="{base}/brand/cogon-studio-mark-transparent.png"
 				alt=""
-				width="28"
-				height="28"
-				class="size-7 rounded-xl"
+				width="32"
+				height="32"
+				class="size-8 object-contain"
 			/>
 			<span>cogon.studio</span>
 		</a>
@@ -48,33 +55,34 @@
 		<nav class="flex items-center gap-2" aria-label="Primary">
 			<Button
 				variant="ghost"
-				size="sm"
+				size="icon"
 				class="rounded-full"
 				onclick={toggleMode}
 				aria-label={mode.current === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+				title={mode.current === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
 			>
-				<span
-					class="bg-accent size-2 rounded-full shadow-[0_0_0_4px_color-mix(in_srgb,var(--accent)_22%,transparent)]"
-					aria-hidden="true"
-				></span>
-				<span class="hidden sm:inline"
-					>{mode.current === 'dark' ? 'Light' : 'Dark'}</span
-				>
+				{#if mode.current === 'dark'}
+					<SunIcon class="size-5" aria-hidden="true" />
+				{:else}
+					<MoonIcon class="size-5" aria-hidden="true" />
+				{/if}
 			</Button>
 			<Button
 				href="https://github.com/cogon-studio"
 				target="_blank"
 				rel="noopener noreferrer"
-				variant="outline"
-				size="sm"
+				variant="ghost"
+				size="icon"
 				class="rounded-full"
+				aria-label="cogon.studio on GitHub"
+				title="cogon.studio on GitHub"
 			>
-				GitHub
+				<GithubLogoIcon class="size-5" aria-hidden="true" />
 			</Button>
 			<Button
 				href="mailto:hello@cogon.studio?subject=Project%20inquiry"
 				size="sm"
-				class="rounded-full bg-[var(--cogon-gold)] text-[var(--cogon-night)] hover:bg-[var(--cogon-gold)]/90"
+				class="rounded-full bg-[linear-gradient(135deg,var(--cogon-gold),color-mix(in_srgb,var(--cogon-gold)_72%,#a96d14))] text-[var(--cogon-night)] hover:brightness-105 dark:bg-[linear-gradient(135deg,var(--cogon-gold),color-mix(in_srgb,var(--cogon-gold)_82%,white))]"
 			>
 				<span class="hidden sm:inline">Start a project</span>
 				<span class="sm:hidden">Start</span>
@@ -89,16 +97,18 @@
 
 <footer class="border-border mt-8 border-t">
 	<div
-		class="text-muted-foreground mx-auto flex w-[min(92%,90rem)] flex-col justify-between gap-3 py-8 text-sm sm:flex-row sm:items-center"
+		class="text-muted-foreground mx-auto flex w-[min(92%,90rem)] flex-col justify-between gap-3 py-8 text-sm sm:grid sm:grid-cols-3 sm:items-center"
 	>
-		<span>cogon.studio · software development studio</span>
-		<span class="font-mono text-xs tracking-wide">Build boldly. Grow reliably.</span>
-		<button
-			type="button"
-			class="text-muted-foreground hover:text-foreground text-left text-xs underline-offset-4 hover:underline"
-			onclick={() => resetMode()}
-		>
-			System theme
-		</button>
+		<span class="inline-flex items-center gap-2">
+			<img
+				src="{base}/brand/cogon-studio-mark-transparent.png"
+				alt=""
+				width="24"
+				height="24"
+				class="size-6 object-contain"
+			/>
+			<span>cogon.studio · software development studio</span>
+		</span>
+		<span class="font-mono text-center text-xs tracking-wide">Build boldly. Grow reliably.</span>
 	</div>
 </footer>

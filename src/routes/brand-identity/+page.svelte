@@ -2,11 +2,8 @@
 	import { base } from '$app/paths';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
-	import BrandGate from '$lib/components/BrandGate.svelte';
 
 	const signals = ['innovative', 'reliable', 'youthful', 'warm'] as const;
-
-
 	const pillars = [
 		{
 			title: 'Purpose',
@@ -31,11 +28,10 @@
 </script>
 
 <svelte:head>
-	<title>Brand design · cogon.studio</title>
+	<title>Brand identity · cogon.studio</title>
 	<meta name="robots" content="noindex,nofollow" />
 </svelte:head>
 
-<BrandGate>
 <section class="hero relative overflow-hidden text-[var(--cogon-cream)]" aria-labelledby="brand-title">
 	<div
 		class="pointer-events-none absolute -right-40 -bottom-72 size-160 rounded-full bg-[color-mix(in_srgb,#5ccb91_10%,transparent)]"
@@ -77,14 +73,6 @@
 					class="rounded-full bg-[var(--cogon-gold)] px-5 text-[var(--cogon-night)] hover:bg-[var(--cogon-gold)]/90"
 				>
 					Start a project
-				</Button>
-				<Button
-					href="{base}/brand/cogon-studio-brand-identity-guide.html"
-					variant="outline"
-					size="lg"
-					class="rounded-full border-[color-mix(in_srgb,#fff8dc_24%,transparent)] bg-[var(--cogon-grove)] text-[var(--cogon-cream)] hover:bg-[var(--cogon-grove)]/80 hover:text-[var(--cogon-cream)]"
-				>
-					Brand system
 				</Button>
 			</div>
 
@@ -189,17 +177,10 @@
 	<Separator class="my-14" />
 
 	<p class="text-muted-foreground max-w-[55ch] text-sm leading-relaxed">
-		Identity, tokens, and usage live in the
-		<a
-			class="text-primary font-medium underline-offset-4 hover:underline"
-			href="{base}/brand/cogon-studio-brand-identity-guide.html"
-		>
-			brand identity guide
-		</a>
-		— including Soft Sun / Night Grove themes, Bricolage · Inter · JetBrains Mono, and CSS tokens.
+		The identity uses Soft Sun / Night Grove themes, Bricolage · Inter · JetBrains Mono, and
+		shared CSS tokens.
 	</p>
 </section>
-</BrandGate>
 
 <style>
 	.hero {

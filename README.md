@@ -6,7 +6,7 @@ This repository powers:
 
 - The organization [profile README](./profile/README.md) shown on [github.com/cogon-studio](https://github.com/cogon-studio)
 - The studio website (SvelteKit + shadcn-svelte), published on Cloudflare Workers
-- The [brand identity guide](./static/brand/cogon-studio-brand-identity-guide.html) and CSS tokens
+- The brand identity guide and CSS tokens
 
 ## Site
 
@@ -40,8 +40,8 @@ Repo secrets required for CI:
 Email: Cloudflare Email Routing is enabled for `cogon.studio`. After verifying the destination address in Gmail, forward `hello@cogon.studio` with Wrangler.
 
 
-## Brand system (private)
+## Brand system
 
-- `/brand-design` — identity landing + guide links (password form; SHA-256 hash compared client-side; no session persistence)
-- `/brand-design-json` and `/brand-design-json.json` — brief core guidelines JSON for AI agents (not linked from the public site)
+- `/brand-identity` — public brand identity page
+- `/brand-identity-json` — core brand guidelines JSON for AI agents
 - Assets under [`static/brand/`](./static/brand/)

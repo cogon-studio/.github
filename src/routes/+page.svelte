@@ -2,12 +2,14 @@
 	import { base } from '$app/paths';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { brandGuidelines } from '$lib/brand/guidelines.js';
-	import Check from '@lucide/svelte/icons/check';
-	import ChevronDown from '@lucide/svelte/icons/chevron-down';
-	import MessageSquare from '@lucide/svelte/icons/message-square';
-	import ShieldCheck from '@lucide/svelte/icons/shield-check';
-	import Sprout from '@lucide/svelte/icons/sprout';
-	import Users from '@lucide/svelte/icons/users';
+	import {
+		CaretDownIcon,
+		ChatCircleTextIcon,
+		CheckIcon,
+		PlantIcon,
+		ShieldCheckIcon,
+		UsersIcon
+	} from 'phosphor-svelte';
 
 	const siteUrl = 'https://cogon.studio/';
 	const title = 'cogon.studio — Software Studio for Growing Teams';
@@ -39,28 +41,28 @@
 
 	const capabilities = [
 		{
-			icon: MessageSquare,
+			icon: ChatCircleTextIcon,
 			title: 'Clear decisions',
 			detail: 'Tradeoffs named early. You always know what we know, what’s uncertain, and the next useful step.',
 			image: `${base}/illustrations/feature-ideas.svg`,
 			alt: 'Illustration of ideas flowing'
 		},
 		{
-			icon: ShieldCheck,
+			icon: ShieldCheckIcon,
 			title: 'Dependable delivery',
 			detail: 'Quality and security aren’t a late phase—they’re visible in how we work every week.',
 			image: `${base}/illustrations/feature-quality.svg`,
 			alt: 'Illustration of a code review'
 		},
 		{
-			icon: Sprout,
+			icon: PlantIcon,
 			title: 'Growth-ready code',
 			detail: 'Software designed to keep growing—maintainable structure, not a disposable MVP shell.',
 			image: `${base}/illustrations/feature-build.svg`,
 			alt: 'Illustration of building a website'
 		},
 		{
-			icon: Users,
+			icon: UsersIcon,
 			title: 'Shared context',
 			detail: 'We teach as we build. Your team inherits clarity, not a black box.',
 			image: `${base}/illustrations/feature-collab.svg`,
@@ -155,6 +157,17 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <section class="hero relative overflow-hidden" aria-labelledby="home-brand">
 	<div class="hero-wash" aria-hidden="true"></div>
+	{#each ['left', 'right'] as side}
+		<div class="cogon-grass cogon-grass--{side}" aria-hidden="true">
+			<img
+				class="cogon-grass__image"
+				src="{base}/illustrations/cogon-grass-corner.webp"
+				alt=""
+				width="1024"
+				height="1536"
+			/>
+		</div>
+	{/each}
 	<svg class="hero-doodle hero-doodle--arrow" viewBox="0 0 80 40" aria-hidden="true">
 		<path
 			d="M4 28 C28 4, 52 4, 76 22"
@@ -183,7 +196,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 	</svg>
 
 	<div class="hero-stage relative z-1 mx-auto w-[min(94%,68rem)] pt-10 pb-16 md:pt-14 md:pb-24">
-		<div class="relative z-2 mx-auto max-w-2xl px-[min(4%,1.5rem)] text-center">
+		<div class="hero-copy relative z-2 mx-auto max-w-2xl px-[min(4%,1.5rem)] text-center">
 			<img
 				class="mx-auto mb-5 size-12 rounded-2xl shadow-[0_12px_40px_rgb(11_74_59_/_18%)] md:size-14"
 				src="{base}/brand/cogon-studio-square-light.png"
@@ -204,11 +217,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 				Fresh product thinking and disciplined engineering for startups that need to ship—and keep
 				growing. {brandGuidelines.tagline}
 			</p>
-			<div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+			<div class="hero-actions mt-7 flex flex-wrap items-center justify-center gap-3">
 				<Button
 					href="mailto:{brandGuidelines.contact.email}?subject=Project%20inquiry"
 					size="lg"
-					class="rounded-full bg-[var(--cogon-gold)] px-6 text-[var(--cogon-night)] shadow-[0_10px_30px_rgb(228_181_68_/_35%)] hover:bg-[var(--cogon-gold)]/90"
+					class="hero-action rounded-full bg-[var(--cogon-gold)] px-6 text-[var(--cogon-night)] shadow-[0_10px_30px_rgb(228_181_68_/_35%)] hover:bg-[var(--cogon-gold)]/90"
 				>
 					Start a project
 				</Button>
@@ -218,29 +231,21 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 					rel="noopener noreferrer"
 					variant="outline"
 					size="lg"
-					class="rounded-full px-6"
+					class="hero-action rounded-full px-6"
 				>
 					View on GitHub
 				</Button>
 			</div>
 		</div>
 
-		<img
-			class="hero-illust relative z-1 mx-auto mt-6 w-[min(100%,32rem)] md:mt-2"
-			src="{base}/illustrations/hero-team.svg"
-			alt="Open-source illustration of a team collaborating"
-			width="800"
-			height="417"
-		/>
-
 		<div class="float-card float-card--checklist" aria-hidden="true">
 			<div class="float-card__dots">
 				<span></span><span></span><span></span>
 			</div>
 			<ul class="float-card__list">
-				<li><Check class="size-3.5" /> Clarify the problem</li>
-				<li><Check class="size-3.5" /> Name the tradeoffs</li>
-				<li class="is-active"><Check class="size-3.5" /> Ship the next step</li>
+				<li><CheckIcon class="size-3.5" /> Clarify the problem</li>
+				<li><CheckIcon class="size-3.5" /> Name the tradeoffs</li>
+				<li class="is-active"><CheckIcon class="size-3.5" /> Ship the next step</li>
 			</ul>
 		</div>
 
@@ -394,7 +399,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 				<details class="faq-item group">
 					<summary class="faq-summary">
 						<span>{faq.q}</span>
-						<ChevronDown class="size-5 shrink-0" aria-hidden="true" />
+						<CaretDownIcon class="size-5 shrink-0" aria-hidden="true" />
 					</summary>
 					<p class="text-muted-foreground pb-5 pr-8 leading-relaxed">{faq.a}</p>
 				</details>
@@ -450,6 +455,12 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 </section>
 
 <style>
+	.hero {
+		min-height: 100svh;
+		display: grid;
+		align-items: center;
+	}
+
 	.hero-wash {
 		position: absolute;
 		inset: -10% -5% auto;
@@ -459,6 +470,38 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 			radial-gradient(ellipse 50% 40% at 82% 20%, color-mix(in srgb, var(--cogon-gold) 16%, transparent), transparent 70%),
 			radial-gradient(ellipse 70% 50% at 50% 0%, color-mix(in srgb, var(--muted) 70%, transparent), transparent 75%);
 		pointer-events: none;
+	}
+
+	.cogon-grass {
+		position: absolute;
+		z-index: 0;
+		bottom: -2.5rem;
+		width: clamp(11rem, 22vw, 20rem);
+		opacity: 0.38;
+		pointer-events: none;
+	}
+
+	.cogon-grass--left {
+		left: -3rem;
+	}
+
+	.cogon-grass--right {
+		right: -3rem;
+		transform: scaleX(-1);
+	}
+
+	.cogon-grass__image {
+		display: block;
+		width: 100%;
+		height: auto;
+		transform-origin: 48% 100%;
+		animation: cogon-wind-left 7.2s ease-in-out infinite;
+	}
+
+	.cogon-grass--right .cogon-grass__image {
+		animation-name: cogon-wind-right;
+		animation-duration: 8.1s;
+		animation-delay: -3.4s;
 	}
 
 	.hero-doodle {
@@ -485,19 +528,16 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 	}
 
 	.hero-stage {
-		min-height: 0;
-		padding-bottom: 2.5rem;
-	}
-
-	.hero-illust {
-		animation: float-y 7s var(--cogon-ease) infinite;
-		filter: drop-shadow(0 24px 48px rgb(11 74 59 / 10%));
-		max-height: 16rem;
-		object-fit: contain;
+		min-height: 100svh;
+		display: grid;
+		align-items: center;
+		padding-top: max(5.5rem, calc(4rem + env(safe-area-inset-top)));
+		padding-bottom: max(11rem, calc(9.5rem + env(safe-area-inset-bottom)));
 	}
 
 	.float-card {
 		position: absolute;
+		z-index: 2;
 		border-radius: 1.1rem;
 		background: var(--card);
 		border: 1px solid color-mix(in srgb, var(--foreground) 8%, transparent);
@@ -760,21 +800,78 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 		}
 	}
 
+	@keyframes cogon-wind-left {
+		0%,
+		100% {
+			transform: rotate(-1.2deg) skewX(-0.5deg);
+		}
+		32% {
+			transform: rotate(2.6deg) skewX(1.2deg) translateX(0.15rem);
+		}
+		46% {
+			transform: rotate(3.5deg) skewX(1.8deg) translateX(0.25rem);
+		}
+		72% {
+			transform: rotate(-1.8deg) skewX(-0.9deg);
+		}
+	}
+
+	@keyframes cogon-wind-right {
+		0%,
+		100% {
+			transform: rotate(1deg) skewX(0.4deg);
+		}
+		38% {
+			transform: rotate(-2.8deg) skewX(-1.4deg) translateX(-0.2rem);
+		}
+		55% {
+			transform: rotate(-3.4deg) skewX(-1.8deg) translateX(-0.3rem);
+		}
+		78% {
+			transform: rotate(1.6deg) skewX(0.8deg);
+		}
+	}
+
 	@media (max-width: 52rem) {
+		.cogon-grass {
+			bottom: -1.75rem;
+			width: clamp(10rem, 52vw, 15rem);
+			opacity: 0.27;
+		}
+
+		.cogon-grass--left {
+			left: -4.5rem;
+		}
+
+		.cogon-grass--right {
+			right: -4.5rem;
+		}
+
+		.hero-actions {
+			margin-inline: auto;
+			width: min(100%, 19rem);
+		}
+
+		.hero-actions :global(.hero-action) {
+			min-height: 2.75rem;
+		}
+
 		.float-card--note {
 			display: none;
 		}
 
 		.float-card--checklist {
 			top: auto;
-			bottom: -0.5rem;
-			left: 0;
+			bottom: max(1.25rem, env(safe-area-inset-bottom));
+			left: 1%;
+			width: min(12rem, 49vw);
 		}
 
 		.float-card--status {
 			top: auto;
-			bottom: 4.5rem;
-			right: 0;
+			bottom: max(1.25rem, env(safe-area-inset-bottom));
+			right: 1%;
+			width: min(9.5rem, 37vw);
 		}
 
 		.hero-doodle--arrow {
@@ -788,8 +885,35 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 		}
 	}
 
+	@media (max-width: 40rem) {
+		.hero-actions {
+			display: grid;
+			grid-template-columns: 1fr;
+		}
+
+		.hero-actions :global(.hero-action) {
+			width: 100%;
+		}
+
+		.hero-doodle {
+			display: none;
+		}
+	}
+
+	@media (min-width: 52.01rem) {
+		.hero {
+			min-height: 100vh;
+		}
+
+		.hero-stage {
+			min-height: 100vh;
+			padding-top: 6rem;
+			padding-bottom: 4rem;
+		}
+	}
+
 	@media (prefers-reduced-motion: reduce) {
-		.hero-illust,
+		.cogon-grass__image,
 		.float-card,
 		.hero-doodle {
 			animation: none;

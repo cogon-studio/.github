@@ -89,7 +89,7 @@ export const brandGuidelines = {
 		markDark: '/brand/cogon-studio-square-dark.png',
 		markRounded: '/brand/cogon-studio-logo-rounded.png',
 		tokensCss: '/brand/cogon-brand-tokens.css',
-		identityGuide: '/brand/cogon-studio-brand-identity-guide.html'
+		identityGuide: '/brand-identity'
 	},
 	agentUsage: {
 		summary:
@@ -97,7 +97,7 @@ export const brandGuidelines = {
 		preferSemanticTokens: true,
 		primaryActionColorRole: 'primary (forest / sprout by theme)',
 		emphasisColorRole: 'accent (harvest gold)',
-		endpoint: '/brand-design-json.json'
+		endpoint: '/brand-identity-json'
 	}
 } as const;
 
