@@ -3,6 +3,7 @@
 	import { base } from '$app/paths';
 	import { ModeWatcher, toggleMode, mode } from 'mode-watcher';
 	import { Button } from '$lib/components/ui/button/index.js';
+	import { brandGuidelines } from '$lib/brand/guidelines.js';
 	import { GithubLogoIcon, MoonIcon, SunIcon } from 'phosphor-svelte';
 	import favicon from '$lib/assets/favicon.svg';
 
@@ -110,5 +111,16 @@
 			<span>cogon.studio · software development studio</span>
 		</span>
 		<span class="font-mono text-center text-xs tracking-wide">Build boldly. Grow reliably.</span>
+		<nav class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:justify-end" aria-label="Footer">
+			<a class="text-foreground underline-offset-4 hover:underline" href="{base}/brand-identity">
+				Brand Identity
+			</a>
+			<a
+				class="text-foreground underline-offset-4 hover:underline"
+				href="mailto:{brandGuidelines.contact.email}"
+			>
+				{brandGuidelines.contact.email}
+			</a>
+		</nav>
 	</div>
 </footer>
