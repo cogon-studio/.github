@@ -219,25 +219,72 @@ html[data-splash='releasing'] #initial-splash {
 	width: 7rem;
 	height: 7rem;
 	place-items: center;
-	animation: splash-float 1.8s var(--cogon-ease) infinite alternate;
 }
 
-.splash-logo img {
-	position: relative;
-	z-index: 1;
-	width: 5.25rem;
-	height: 5.25rem;
-	object-fit: contain;
+.splash-logo svg {
+	width: 7rem;
+	height: 7rem;
+	overflow: visible;
 	filter: drop-shadow(0 1rem 1.5rem color-mix(in srgb, var(--cogon-forest) 24%, transparent));
 }
 
-.splash-logo__orbit {
-	position: absolute;
-	inset: 0;
-	border: 2px solid color-mix(in srgb, var(--cogon-sprout) 36%, transparent);
-	border-top-color: var(--cogon-gold);
-	border-radius: 999px;
-	animation: splash-orbit 1.6s linear infinite;
+.splash-logo__blade {
+	opacity: 0;
+	transform: scale(0.96);
+	transform-origin: 50% 88%;
+	animation: splash-colorize 360ms var(--cogon-ease) forwards;
+}
+
+.blade-gold-left,
+.blade-gold-right {
+	fill: var(--cogon-gold);
+}
+
+.blade-forest {
+	fill: var(--cogon-forest);
+}
+
+.blade-sprout {
+	fill: var(--cogon-sprout);
+}
+
+.splash-logo__blade:nth-child(1) {
+	animation-delay: 780ms;
+}
+
+.splash-logo__blade:nth-child(2) {
+	animation-delay: 870ms;
+}
+
+.splash-logo__blade:nth-child(3) {
+	animation-delay: 960ms;
+}
+
+.splash-logo__blade:nth-child(4) {
+	animation-delay: 1050ms;
+}
+
+.splash-logo__outlines path {
+	fill: none;
+	stroke: color-mix(in srgb, var(--foreground) 74%, transparent);
+	stroke-width: 2.5;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-dasharray: 1;
+	stroke-dashoffset: 1;
+	animation: splash-draw 620ms var(--cogon-ease) forwards;
+}
+
+.splash-logo__outlines path:nth-child(2) {
+	animation-delay: 70ms;
+}
+
+.splash-logo__outlines path:nth-child(3) {
+	animation-delay: 140ms;
+}
+
+.splash-logo__outlines path:nth-child(4) {
+	animation-delay: 210ms;
 }
 
 #initial-splash p {
@@ -248,23 +295,33 @@ html[data-splash='releasing'] #initial-splash {
 	text-transform: uppercase;
 }
 
-@keyframes splash-orbit {
+@keyframes splash-draw {
 	to {
-		transform: rotate(360deg);
+		stroke-dashoffset: 0;
 	}
 }
 
-@keyframes splash-float {
+@keyframes splash-colorize {
 	to {
-		transform: translateY(-0.4rem) scale(1.025);
+		opacity: 1;
+		transform: scale(1);
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	#initial-splash,
-	.splash-logo,
-	.splash-logo__orbit {
+	#initial-splash {
 		animation: none;
 		transition: none;
+	}
+
+	.splash-logo__blade {
+		opacity: 1;
+		transform: none;
+		animation: none;
+	}
+
+	.splash-logo__outlines path {
+		stroke-dashoffset: 0;
+		animation: none;
 	}
 }
