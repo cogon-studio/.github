@@ -14,7 +14,7 @@ Innovative enough to move ideas forward. Reliable enough to build on. Human enou
 ### Links
 
 - [Studio home](https://cogon.studio/)
-- [Brand identity](https://cogon.studio/brand/cogon-studio-brand-identity-guide.html)
+- [Brand identity](https://cogon.studio/brand-identity)
 - [Organization](https://github.com/cogon-studio)
 
 ---
