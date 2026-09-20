@@ -3,9 +3,14 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { brandGuidelines } from '$lib/brand/guidelines.js';
 	import {
+		ArrowUpRightIcon,
+		ArrowsClockwiseIcon,
 		CaretDownIcon,
 		ChatCircleTextIcon,
 		CheckIcon,
+		DeviceMobileIcon,
+		FolderOpenIcon,
+		GithubLogoIcon,
 		PlantIcon,
 		ShieldCheckIcon,
 		UsersIcon
@@ -343,6 +348,57 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 				</li>
 			{/each}
 		</ul>
+	</div>
+</section>
+
+<section class="showcase-section" aria-labelledby="showcase-title">
+	<div class="mx-auto w-[min(92%,72rem)] py-16 md:py-24">
+		<div class="showcase-panel">
+			<div class="showcase-copy">
+				<h2
+					id="showcase-title"
+					class="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.02] font-bold tracking-[-0.03em] text-balance"
+				>
+					Project <span class="text-[var(--cogon-sprout)]">showcase</span>
+				</h2>
+				<h3 class="font-display mt-8 text-2xl font-semibold tracking-tight">Local Git</h3>
+				<p class="mt-3 max-w-[52ch] text-lg leading-relaxed text-[var(--cogon-mist)]">
+					An iPhone Git client for folders in Files. Connect a local On My iPhone folder to
+					a GitHub repository, review changes, and synchronize from your phone.
+				</p>
+				<Button
+					href="https://localgit.cogon.studio/"
+					target="_blank"
+					rel="noopener noreferrer"
+					size="lg"
+					class="mt-7 rounded-full bg-[var(--cogon-gold)] px-6 text-[var(--cogon-night)] hover:bg-[var(--cogon-gold)]/90"
+				>
+					Visit Local Git
+					<ArrowUpRightIcon class="size-4" aria-hidden="true" />
+				</Button>
+			</div>
+
+			<div class="showcase-demo" aria-label="Local Git connects an iPhone folder to GitHub">
+				<div class="showcase-device" aria-hidden="true">
+					<DeviceMobileIcon class="showcase-device__icon" />
+					<div>
+						<p class="showcase-demo__label">On My iPhone</p>
+						<p class="showcase-demo__title"><FolderOpenIcon /> Local folder</p>
+					</div>
+				</div>
+				<div class="showcase-sync" aria-hidden="true">
+					<ArrowsClockwiseIcon />
+					<span>Synchronize</span>
+				</div>
+				<div class="showcase-repo" aria-hidden="true">
+					<GithubLogoIcon class="showcase-repo__icon" />
+					<div>
+						<p class="showcase-demo__label">GitHub</p>
+						<p class="showcase-demo__title">Repository</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -708,6 +764,89 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 		padding: 0.65rem;
 	}
 
+	.showcase-section {
+		background: var(--cogon-night);
+		color: var(--cogon-cream);
+	}
+
+	.showcase-panel {
+		display: grid;
+		align-items: center;
+		gap: 3rem;
+	}
+
+	.showcase-copy {
+		max-width: 38rem;
+	}
+
+	.showcase-demo {
+		position: relative;
+		display: grid;
+		gap: 1rem;
+		max-width: 32rem;
+		margin-inline: auto;
+		padding: clamp(1.25rem, 4vw, 2.25rem);
+		border-radius: 1.25rem;
+		background: color-mix(in srgb, var(--cogon-grove) 82%, var(--cogon-sprout));
+		box-shadow: 0 24px 70px rgb(0 0 0 / 24%);
+	}
+
+	.showcase-device,
+	.showcase-repo {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 1.1rem;
+		border-radius: 0.9rem;
+		background: color-mix(in srgb, var(--cogon-cream) 9%, transparent);
+	}
+
+	.showcase-device__icon,
+	.showcase-repo__icon {
+		width: 2rem;
+		height: 2rem;
+		flex: none;
+		color: var(--cogon-sprout);
+	}
+
+	.showcase-demo__label {
+		margin: 0 0 0.2rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--cogon-mist);
+	}
+
+	.showcase-demo__title {
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1.05rem;
+		font-weight: 650;
+	}
+
+	.showcase-demo__title :global(svg) {
+		width: 1.15rem;
+		height: 1.15rem;
+		color: var(--cogon-gold);
+	}
+
+	.showcase-sync {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.55rem;
+		font-size: 0.82rem;
+		font-weight: 650;
+		color: var(--cogon-gold);
+	}
+
+	.showcase-sync :global(svg) {
+		width: 1.2rem;
+		height: 1.2rem;
+	}
+
 	.value-row {
 		border-bottom: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
 		padding: 1.15rem 0;
@@ -909,6 +1048,11 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 			min-height: 100vh;
 			padding-top: 6rem;
 			padding-bottom: 4rem;
+		}
+
+		.showcase-panel {
+			grid-template-columns: 1.05fr 0.95fr;
+			gap: clamp(3rem, 7vw, 6rem);
 		}
 	}
 
