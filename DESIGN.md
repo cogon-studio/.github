@@ -1,58 +1,38 @@
 # Design System
 
-<!-- impeccable:design-schema 1 -->
-
 ## World
 
-Breezy illustrated studio landing. Soft ivory fields, Night Grove accents (forest, sprout, harvest gold), floating UI chips with soft depth shadows, unDraw scenes recolored to brand greens, pill CTAs. Refuses text-only slabs and purple-on-white SaaS clones.
+Load-bearing product engineering page. White field, forest ink `#163300`, lime action `#9FE870`, Plus Jakarta Sans extra-bold uppercase headlines, IBM Plex Mono for indices. Pictures and a hero loop sit in 24px frames. Refuses breezy illustration collages, gold gradients, and purple SaaS clones.
+
+The palette comes from a calm cash-desk system. Marketing uses the same tokens with more mass: huge type, a forest inverse band, and lime only as the action.
 
 ## Surfaces
 
 ### Marketing home (`src/routes/+page.svelte`)
 
-- **Mode:** Persuade
-- **First viewport:** Centered promise with sprout accent word; gold primary CTA; floating checklist/status/decision cards; hero unDraw teamwork scene
-- **Sections:** Integrated pillars (3 illustrated tiles) → capability grid (2×2) → values with illustration → FAQ accordion → illustrated CTA panel
-- **Motion:** Soft float on hero illustration and chips; doodle bob; reduced-motion respected
+Section order follows a platform landing, not a feature grid:
 
-### Brand system (`src/routes/brand-identity/+page.svelte`)
+1. Centered uppercase promise and a lime pill
+2. Wide hero loop with a pause control
+3. Holding-word marquee
+4. Four proof tiles (practices, not invented volumes)
+5. Two audience tracks with tall illustrations
+6. Product tabs: Decide, Build, Steady, Hand off
+7. Delivery split with a checklist
+8. Partnering row
+9. Standards band on forest
+10. Closing statement and three ways in
 
-- **Mode:** Read
-- **World:** Night Grove documentation canvas with numbered sections, fine rules, large type specimens, and dense token swatches
-- **First viewport:** Full-height brand-system statement followed by a concise source-of-truth description
-- **Sections:** Logo specimens → typography scale → core palette and themes → voice principles and examples
-- **Constraint:** This route remains intentionally dark so light and dark brand specimens can be compared on one stable canvas
+### Brand standard (`src/routes/brand-identity/+page.svelte`)
 
-## Tokens
-
-Inherited from `layout.css` / brand guidelines, with light marketing ground cooled toward ivory (`#fffdf8`) and white cards. Dark theme remains Night Grove.
-
-| Role | Light | Notes |
-|------|-------|-------|
-| Background | `#fffdf8` | Cooler than Soft Sun cream for breezy feel |
-| Card | `#ffffff` | Soft shadow elevation |
-| Accent word | `--cogon-sprout` | Headline highlights |
-| Primary CTA | `--cogon-gold` | Pill buttons |
-| Ink | `#12352c` | Body/headings |
-
-## Type
-
-- Display: Bricolage Grotesque Variable
-- Body: Inter Variable
-- Mono: JetBrains Mono (data/code only)
+Light specimen page: mark, type, color, shape, voice. Source of truth is `src/lib/brand/guidelines.ts`.
 
 ## Imagery
 
-Open-source unDraw illustrations (Katerina Limpitsouni) under `static/illustrations/`, recolored toward forest/sprout. License note in `static/illustrations/LICENSE.txt`. Synthetic floating UI cards illustrate delivery rituals—not fake customer metrics.
-
-## Components
-
-- Pill buttons (shadcn Button + `rounded-full`)
-- Feature tiles and capability cards: ~1.25rem radius, soft shadow, muted illustration wells
-- FAQ: native `<details>` / `<summary>` accordion
-- Header: light sticky bar with Start CTA
+`static/placeholders/` holds stand-in frames. Each `<img>` alt is the brief for a later generated replacement. Do not invent customer logos or metrics inside those frames.
 
 ## Do / Don’t
 
-- Do keep brand greens/gold; do ship real illustrations
-- Don’t use purple SaaS defaults; don’t invent testimonials or vanity metrics
+- Do use lime for the primary action and forest for headlines and inverse bands
+- Do keep motion on the hero loop, the marquee, and the headline
+- Don’t invent proof, and don’t soften the page back into floating chips

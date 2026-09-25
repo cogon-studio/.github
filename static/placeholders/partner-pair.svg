@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="560" viewBox="0 0 800 560" role="img">
+  <rect width="800" height="560" fill="#163300"/>
+  <rect x="0" y="347.2" width="800" height="212.8" fill="#0f2408"/>
+  <circle cx="576" cy="212.8" r="123.2" fill="#9FE870" opacity="0.9"/>
+  <rect x="64" y="78.4" width="368" height="291.2" rx="28" fill="#F2F5F0"/>
+  <rect x="96" y="112" width="224.00000000000003" height="18" rx="9" fill="#163300"/>
+  <rect x="96" y="156.8" width="215" height="10" rx="5" fill="#9FE870"/>
+  <rect x="96" y="201.6" width="272" height="8" rx="4" fill="#D9E0D6"/>
+  <rect x="96" y="235.2" width="240" height="8" rx="4" fill="#D9E0D6"/>
+  <rect x="96" y="280" width="128" height="36" rx="18" fill="#163300"/>
+  <text x="64" y="504" fill="#9FE870" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="18" letter-spacing="3">DEDICATED PAIR</text>
+</svg>

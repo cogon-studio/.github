@@ -1,43 +1,35 @@
 # Product
 
-<!-- impeccable:product-schema 1 -->
-
 ## Platform
 
 web
 
 ## Users
 
-Founders and eng leads at startups and growing teams who need product momentum without chaotic delivery. [inferred from brand guidelines]
+Founders and engineering leads who need a product to keep shipping after the first launch.
 
 ## Product Purpose
 
-cogon.studio is a software development studio that helps startups move from fuzzy ideas or fragile MVPs to maintainable, growth-ready software. Success means clear decisions, dependable delivery, and products that keep shipping after launch. [inferred from brand guidelines]
+cogon.studio is product engineering infrastructure. Teams plug the studio in when software has to hold: named decisions, visible delivery, and a system the team can inherit.
 
 ## Positioning
 
-Blends fresh product thinking with disciplined engineering — momentum without chaos. Not freelancers who disappear, not agencies that drown teams in process. [inferred from brand guidelines]
+A desk you plug into. Not a breezy studio and not a process-heavy agency.
 
 ## Brand Commitments
 
 - Name: cogon.studio
-- Tagline: Build boldly. Grow reliably.
-- Voice: clear, grounded, warm, curious
-- Fonts: Bricolage Grotesque (display), Inter (body), JetBrains Mono (mono)
-- Colors: Night Grove / Soft Sun system (forest, sprout, harvest gold) — do not use purple-on-white SaaS defaults
-- Mark assets in `/brand/`
+- Tagline: Infrastructure for software that has to hold.
+- Voice: clear, grounded, strong, specific
+- Fonts: Plus Jakarta Sans, IBM Plex Mono
+- Colors: forest ink `#163300`, lime `#9FE870`, canvas `#F2F5F0`
 - Contact: hello@cogon.studio · https://github.com/cogon-studio
 
 ## Evidence
 
-Early studio; proof lives in public GitHub work and how tradeoffs are discussed — no invented logos, vanity metrics, or fake testimonials. [inferred from site copy]
+Early studio. Proof is public GitHub work and written tradeoffs. Do not invent customer logos, volumes, or testimonials.
 
 ## Constraints
 
-- Cloudflare Workers site (SvelteKit adapter-cloudflare)
-- Preserve factual copy and CTAs (email inquiry, GitHub)
-- Landing redesign may adopt breezy illustration-heavy SaaS layout language while keeping brand palette and voice
-
-## Open Decisions
-
-- Whether Soft Sun cream or cooler white should dominate light marketing surfaces long-term
+- Cloudflare Workers site (SvelteKit)
+- Placeholder images stay until replaced; alts are the generation briefs

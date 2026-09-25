@@ -20,7 +20,7 @@
 				id="error-title"
 				class="font-display max-w-[13ch] text-[clamp(2.75rem,6vw,5rem)] leading-[0.98] font-bold tracking-[-0.035em] text-balance"
 			>
-				{isNotFound ? 'This page didn’t take root.' : 'Something interrupted the page.'}
+				{isNotFound ? 'This page is not on the map.' : 'This page did not load.'}
 			</h1>
 			<p class="text-muted-foreground mt-6 max-w-[42ch] text-lg leading-relaxed">
 				{isNotFound
@@ -30,7 +30,7 @@
 			<Button
 				href="{base}/"
 				size="lg"
-				class="mt-8 rounded-full bg-[var(--cogon-gold)] px-6 text-[var(--cogon-night)] shadow-[0_10px_30px_rgb(228_181_68_/_28%)] hover:bg-[var(--cogon-gold)]/90"
+				class="mt-8 rounded-full bg-[var(--cogon-lime)] px-6 text-[var(--cogon-lime-ink)] hover:brightness-95"
 			>
 				<ArrowLeftIcon class="size-4" aria-hidden="true" />
 				Back to home
@@ -64,8 +64,7 @@
 		position: absolute;
 		inset: 0;
 		background:
-			radial-gradient(ellipse 45% 45% at 18% 40%, color-mix(in srgb, var(--cogon-sprout) 13%, transparent), transparent 72%),
-			radial-gradient(ellipse 40% 40% at 82% 30%, color-mix(in srgb, var(--cogon-gold) 13%, transparent), transparent 70%);
+			radial-gradient(ellipse 45% 45% at 18% 40%, color-mix(in srgb, var(--cogon-lime) 18%, transparent), transparent 72%);
 		pointer-events: none;
 	}
 
@@ -91,7 +90,7 @@
 		font-weight: 800;
 		line-height: 0.8;
 		letter-spacing: -0.04em;
-		color: color-mix(in srgb, var(--cogon-sprout) 12%, transparent);
+		color: color-mix(in srgb, var(--cogon-lime) 28%, transparent);
 		user-select: none;
 	}
 

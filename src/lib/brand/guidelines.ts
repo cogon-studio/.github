@@ -1,87 +1,92 @@
 /**
- * Brief core brand guidelines for AI agents across cogon.studio projects.
- * Keep this file the single source of truth for agent consumption.
+ * Brand guidelines for cogon.studio.
+ * Visual system adapted from a trust-first forest + lime language,
+ * pushed harder for marketing: load-bearing type, solid lime action, forest mass.
  */
 export const brandGuidelines = {
-	version: '1.1',
+	version: '2.0',
 	brand: 'cogon.studio',
-	organizationType: 'Software development studio',
-	tagline: 'Build boldly. Grow reliably.',
+	organizationType: 'Product engineering infrastructure',
+	tagline: 'Infrastructure for software that has to hold.',
 	url: 'https://cogon.studio/',
 	contact: {
 		email: 'hello@cogon.studio',
 		github: 'https://github.com/cogon-studio'
 	},
-	audience: 'Startups and growing teams who need product momentum without chaotic delivery.',
+	audience:
+		'Founders and engineering leads who need a product to keep shipping after the first launch.',
 	positioning:
-		'Blends fresh product thinking with disciplined engineering — momentum without chaos.',
+		'A studio you plug into. We hold the decisions, the delivery, and the system your team inherits.',
 	promise:
-		'Clear decisions, dependable delivery, and software designed to keep growing.',
-	personality: ['innovative', 'reliable', 'youthful', 'warm'] as const,
+		'Named tradeoffs, visible quality, and software that still stands after we step back.',
+	personality: ['direct', 'reliable', 'precise', 'steady'] as const,
 	values: [
-		{ name: 'Curious by design', detail: 'Ask better questions before writing code.' },
-		{ name: 'Reliable by default', detail: 'Make quality, security, and follow-through visible.' },
-		{ name: 'Human in every detail', detail: 'Communicate plainly; design for real people.' },
-		{ name: 'Grow together', detail: 'Share context, teach openly, improve continuously.' }
+		{ name: 'Decisions first', detail: 'Name the tradeoff before the first sprint spends it.' },
+		{ name: 'Visible quality', detail: 'Security, review, and follow-through show up every week.' },
+		{ name: 'Context that transfers', detail: 'The team inherits the system, not a black box.' },
+		{ name: 'A useful next step', detail: 'Every conversation ends with what is known and what is open.' }
 	],
 	voice: {
-		principles: ['clear', 'grounded', 'warm', 'curious'] as const,
-		say: 'Here is what we know, what is uncertain, and the next useful step.',
+		principles: ['clear', 'grounded', 'strong', 'specific'] as const,
+		say: 'Here is what the system has to hold, what is still open, and the next build.',
 		avoid: 'We leverage cutting-edge solutions to revolutionize your digital transformation.',
 		rules: [
-			'Lead with the outcome. Prefer plain words and short sentences.',
-			'Use evidence and specifics. Avoid inflated claims and empty tech hype.',
-			'Sound like a thoughtful teammate: direct, respectful, and encouraging.',
-			'Invite possibilities. Explain tradeoffs without making the audience feel behind.'
+			'Lead with the outcome. Short sentences. Plain words.',
+			'Use specifics. Do not invent volumes, logos, or guarantees.',
+			'Sound like a desk that holds weight: direct, calm, and exact.',
+			'State the tradeoff. Do not soften a hard constraint into a slogan.'
 		]
 	},
 	fonts: {
-		display: 'Bricolage Grotesque',
-		body: 'Inter',
-		mono: 'JetBrains Mono'
+		display: 'Plus Jakarta Sans',
+		body: 'Plus Jakarta Sans',
+		mono: 'IBM Plex Mono'
 	},
 	colors: {
-		forest: '#0B4A3B',
-		night: '#071C16',
-		sprout: '#5CCB91',
-		gold: '#E4B544',
-		softSun: '#FFF7D6',
-		ivory: '#FFFDF4',
-		ink: '#12352C',
-		grove: '#0E2A22',
-		mist: '#B7C8BE',
-		cream: '#FFF8DC'
+		ink: '#163300',
+		muted: '#5C6B57',
+		line: '#D9E0D6',
+		canvas: '#F2F5F0',
+		panel: '#FFFFFF',
+		sage: '#E8EBE6',
+		lime: '#9FE870',
+		wash: '#E4F7D4',
+		inverse: '#163300',
+		night: '#0F160C',
+		grove: '#162014'
 	},
 	themes: {
 		light: {
-			bg: '#FFF7D6',
-			surface: '#FFFDF4',
-			text: '#12352C',
-			primary: '#0B4A3B',
-			accent: '#E4B544'
+			bg: '#FFFFFF',
+			surface: '#F2F5F0',
+			text: '#163300',
+			primary: '#9FE870',
+			accent: '#163300'
 		},
 		dark: {
-			bg: '#071C16',
-			surface: '#0E2A22',
-			text: '#FFF8DC',
-			primary: '#5CCB91',
-			accent: '#F0C85A'
+			bg: '#0F160C',
+			surface: '#162014',
+			text: '#E7F0E2',
+			primary: '#9FE870',
+			accent: '#E7F0E2'
 		}
 	},
-	radii: { sm: 8, md: 14, lg: 22 },
+	radii: { sm: 8, md: 16, lg: 24, pill: 9999 },
 	motion: {
-		fastMs: 160,
-		baseMs: 220,
+		fastMs: 200,
+		baseMs: 280,
 		ease: 'cubic-bezier(0.22, 1, 0.36, 1)'
 	},
 	expression: {
-		shape: 'Rounded rectangles, soft arcs, generous whitespace.',
-		interface: 'One clear primary action per view. Green carries trust; yellow signals emphasis.',
-		imagery: 'Real collaboration, product details, prototypes, outcomes. Natural light.',
+		shape: 'Pill actions. 24px media frames. Forest slabs for weight. Hairline rules only where they separate real groups.',
+		interface: 'One lime action. Forest carries the headline. Mono carries indices and proof.',
+		imagery:
+			'Photographic infrastructure and precise product UI, blended with bold type. Placeholders describe the shot; they are not the final art.',
 		doNot: [
-			'Stretch, rotate, or recolor the mark outside the palette',
-			'Use purple-on-white SaaS defaults or cream+terracotta editorial clichés',
-			'Lead with fake metrics, hype adjectives, or stacked card grids in the hero'
+			'Recolor the mark outside forest and lime',
+			'Use purple SaaS gradients, neon glows, or glass stacks for their own sake',
+			'Invent customer logos, volumes, or testimonials',
+			'Soften the page into a breezy illustration collage'
 		]
 	},
 	assets: {
@@ -93,10 +98,10 @@ export const brandGuidelines = {
 	},
 	agentUsage: {
 		summary:
-			'Apply these tokens, voice rules, and composition constraints when generating UI, copy, or docs for cogon.studio products.',
+			'Apply forest ink, lime action, Plus Jakarta Sans, and IBM Plex Mono. Marketing type is heavy and structural. Do not invent proof.',
 		preferSemanticTokens: true,
-		primaryActionColorRole: 'primary (forest / sprout by theme)',
-		emphasisColorRole: 'accent (harvest gold)',
+		primaryActionColorRole: 'lime fill with forest text',
+		emphasisColorRole: 'forest inverse slabs',
 		endpoint: '/brand-identity-json'
 	}
 } as const;

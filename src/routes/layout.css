@@ -1,101 +1,117 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn-svelte/tailwind.css';
-@import '@fontsource-variable/inter';
-@import '@fontsource-variable/bricolage-grotesque';
-@import '@fontsource/jetbrains-mono/400.css';
-@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource-variable/plus-jakarta-sans';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import '@fontsource/ibm-plex-mono/600.css';
 
 @custom-variant dark (&:is(.dark *));
 
-/* cogon.studio brand → shadcn semantic map */
+/* cogon.studio — forest ink + lime. Marketing is load-bearing, not a quiet cash desk. */
 :root {
-	/* Cooler ivory ground for breezy marketing surfaces; Soft Sun reserved for accents */
-	--background: #fffdf8;
-	--foreground: #12352c;
+	--background: #ffffff;
+	--foreground: #163300;
 	--card: #ffffff;
-	--card-foreground: #12352c;
+	--card-foreground: #163300;
 	--popover: #ffffff;
-	--popover-foreground: #12352c;
-	--primary: #0b4a3b;
-	--primary-foreground: #fffdf4;
-	--secondary: #f3faf6;
-	--secondary-foreground: #12352c;
-	--muted: #eef6f1;
-	--muted-foreground: #3d5c52;
-	--accent: #e4b544;
-	--accent-foreground: #12352c;
-	--destructive: #b42318;
-	--border: color-mix(in srgb, #12352c 16%, transparent);
-	--input: color-mix(in srgb, #12352c 16%, transparent);
-	--ring: #5ccb91;
-	--chart-1: #0b4a3b;
-	--chart-2: #5ccb91;
-	--chart-3: #e4b544;
-	--chart-4: #071c16;
-	--chart-5: #12352c;
-	--radius: 0.875rem;
-	--sidebar: #fffdf4;
-	--sidebar-foreground: #12352c;
-	--sidebar-primary: #0b4a3b;
-	--sidebar-primary-foreground: #fffdf4;
-	--sidebar-accent: #f5e9c0;
-	--sidebar-accent-foreground: #12352c;
-	--sidebar-border: color-mix(in srgb, #12352c 16%, transparent);
-	--sidebar-ring: #5ccb91;
+	--popover-foreground: #163300;
+	--primary: #163300;
+	--primary-foreground: #f2f5f0;
+	--secondary: #e8ebe6;
+	--secondary-foreground: #163300;
+	--muted: #e8ebe6;
+	--muted-foreground: #5c6b57;
+	--accent: #9fe870;
+	--accent-foreground: #163300;
+	--destructive: #a34432;
+	--border: #d9e0d6;
+	--input: #d9e0d6;
+	--ring: #9fe870;
+	--chart-1: #163300;
+	--chart-2: #9fe870;
+	--chart-3: #5c6b57;
+	--chart-4: #0f160c;
+	--chart-5: #e4f7d4;
+	--radius: 1.25rem;
+	--sidebar: #f2f5f0;
+	--sidebar-foreground: #163300;
+	--sidebar-primary: #163300;
+	--sidebar-primary-foreground: #f2f5f0;
+	--sidebar-accent: #e4f7d4;
+	--sidebar-accent-foreground: #163300;
+	--sidebar-border: #d9e0d6;
+	--sidebar-ring: #9fe870;
 
-	--cogon-night: #071c16;
-	--cogon-grove: #0e2a22;
-	--cogon-forest: #0b4a3b;
-	--cogon-ink: #12352c;
-	--cogon-sprout: #5ccb91;
-	--cogon-gold: #e4b544;
-	--cogon-soft-sun: #fff7d6;
-	--cogon-cream: #fff8dc;
-	--cogon-ivory: #fffdf4;
-	--cogon-mist: #b7c8be;
+	--cogon-ink: #163300;
+	--cogon-muted: #5c6b57;
+	--cogon-line: #d9e0d6;
+	--cogon-canvas: #f2f5f0;
+	--cogon-panel: #ffffff;
+	--cogon-sage: #e8ebe6;
+	--cogon-lime: #9fe870;
+	--cogon-lime-ink: #163300;
+	--cogon-wash: #e4f7d4;
+	--cogon-inverse: #163300;
+	--cogon-on-inverse: #f2f5f0;
+	--cogon-night: #0f160c;
+	--cogon-grove: #162014;
 	--cogon-ease: cubic-bezier(0.22, 1, 0.36, 1);
+	/* legacy aliases so older specimens keep compiling during the cutover */
+	--cogon-forest: #163300;
+	--cogon-sprout: #9fe870;
+	--cogon-gold: #9fe870;
+	--cogon-soft-sun: #f2f5f0;
+	--cogon-cream: #f2f5f0;
+	--cogon-ivory: #ffffff;
+	--cogon-mist: #9aab94;
 }
 
 .dark {
-	--background: #071c16;
-	--foreground: #fff8dc;
-	--card: #0e2a22;
-	--card-foreground: #fff8dc;
-	--popover: #0e2a22;
-	--popover-foreground: #fff8dc;
-	--primary: #5ccb91;
-	--primary-foreground: #071c16;
-	--secondary: #14352b;
-	--secondary-foreground: #fff8dc;
-	--muted: #14352b;
-	--muted-foreground: #b7c8be;
-	--accent: #f0c85a;
-	--accent-foreground: #071c16;
-	--destructive: #f97066;
-	--border: color-mix(in srgb, #fff8dc 16%, transparent);
-	--input: color-mix(in srgb, #fff8dc 16%, transparent);
-	--ring: #f0c85a;
-	--chart-1: #5ccb91;
-	--chart-2: #f0c85a;
-	--chart-3: #fff8dc;
-	--chart-4: #0e2a22;
-	--chart-5: #b7c8be;
-	--sidebar: #0e2a22;
-	--sidebar-foreground: #fff8dc;
-	--sidebar-primary: #5ccb91;
-	--sidebar-primary-foreground: #071c16;
-	--sidebar-accent: #14352b;
-	--sidebar-accent-foreground: #fff8dc;
-	--sidebar-border: color-mix(in srgb, #fff8dc 16%, transparent);
-	--sidebar-ring: #f0c85a;
-	--cogon-gold: #f0c85a;
+	--background: #0f160c;
+	--foreground: #e7f0e2;
+	--card: #162014;
+	--card-foreground: #e7f0e2;
+	--popover: #162014;
+	--popover-foreground: #e7f0e2;
+	--primary: #9fe870;
+	--primary-foreground: #163300;
+	--secondary: #1c2818;
+	--secondary-foreground: #e7f0e2;
+	--muted: #1c2818;
+	--muted-foreground: #9aab94;
+	--accent: #9fe870;
+	--accent-foreground: #163300;
+	--destructive: #e07a68;
+	--border: #2a3a24;
+	--input: #2a3a24;
+	--ring: #9fe870;
+	--chart-1: #9fe870;
+	--chart-2: #e7f0e2;
+	--chart-3: #9aab94;
+	--chart-4: #162014;
+	--chart-5: #5c6b57;
+	--sidebar: #162014;
+	--sidebar-foreground: #e7f0e2;
+	--sidebar-primary: #9fe870;
+	--sidebar-primary-foreground: #163300;
+	--sidebar-accent: #1c2818;
+	--sidebar-accent-foreground: #e7f0e2;
+	--sidebar-border: #2a3a24;
+	--sidebar-ring: #9fe870;
+	--cogon-ink: #e7f0e2;
+	--cogon-muted: #9aab94;
+	--cogon-line: #2a3a24;
+	--cogon-canvas: #0f160c;
+	--cogon-panel: #162014;
+	--cogon-sage: #1c2818;
+	--cogon-grove: #1c2818;
 }
 
 @theme inline {
-	--font-sans: 'Inter Variable', Inter, system-ui, sans-serif;
-	--font-display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, sans-serif;
-	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
+	--font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+	--font-display: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', system-ui, sans-serif;
+	--font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 	--color-sidebar-ring: var(--sidebar-ring);
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -186,9 +202,8 @@
 	place-items: center;
 	align-content: center;
 	gap: 1.25rem;
-	background:
-		radial-gradient(circle at 50% 42%, color-mix(in srgb, var(--cogon-sprout) 16%, transparent), transparent 34%),
-		var(--background);
+	background: var(--cogon-inverse);
+	color: var(--cogon-on-inverse);
 	color: var(--foreground);
 	opacity: 1;
 	transition: opacity 260ms var(--cogon-ease);
@@ -225,7 +240,7 @@ html[data-splash='releasing'] #initial-splash {
 	width: 7rem;
 	height: 7rem;
 	overflow: visible;
-	filter: drop-shadow(0 1rem 1.5rem color-mix(in srgb, var(--cogon-forest) 24%, transparent));
+	filter: none;
 }
 
 .splash-logo__blade {
@@ -236,16 +251,13 @@ html[data-splash='releasing'] #initial-splash {
 }
 
 .blade-gold-left,
-.blade-gold-right {
-	fill: var(--cogon-gold);
+.blade-gold-right,
+.blade-sprout {
+	fill: var(--cogon-lime);
 }
 
 .blade-forest {
-	fill: var(--cogon-forest);
-}
-
-.blade-sprout {
-	fill: var(--cogon-sprout);
+	fill: #0b2400;
 }
 
 .splash-logo__blade:nth-child(1) {
@@ -289,10 +301,11 @@ html[data-splash='releasing'] #initial-splash {
 
 #initial-splash p {
 	font-family: var(--font-display);
-	font-size: 0.875rem;
-	font-weight: 650;
-	letter-spacing: 0.08em;
+	font-size: 0.8125rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
 	text-transform: uppercase;
+	color: var(--cogon-lime);
 }
 
 @keyframes splash-draw {

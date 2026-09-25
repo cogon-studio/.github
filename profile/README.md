@@ -1,20 +1,20 @@
 # cogon.studio
 
-**Software development studio.** Build boldly. Grow reliably.
+**Product engineering infrastructure.** Infrastructure for software that has to hold.
 
-Innovative enough to move ideas forward. Reliable enough to build on. Human enough to enjoy working with.
+Named decisions. Visible quality. A system your team can inherit.
 
-### What we care about
+### What we hold
 
-- **Curious by design** — ask better questions before writing code
-- **Reliable by default** — quality, security, and follow-through stay visible
-- **Human in every detail** — plain language, software for real people
-- **Grow together** — share context, teach openly, improve continuously
+- **Decisions first** — the tradeoff is written before the sprint spends it
+- **Visible quality** — review, security, and follow-through show up in the week
+- **Context that transfers** — the team inherits the system, not a black box
+- **A useful next step** — what is known, what is open, and what happens next
 
 ### Links
 
 - [Studio home](https://cogon.studio/)
-- [Brand identity](https://cogon.studio/brand-identity)
+- [Brand standard](https://cogon.studio/brand-identity)
 - [Organization](https://github.com/cogon-studio)
 
 ---

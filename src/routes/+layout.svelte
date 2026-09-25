@@ -22,8 +22,8 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<meta name="theme-color" content="#fffdf8" media="(prefers-color-scheme: light)" />
-	<meta name="theme-color" content="#071c16" media="(prefers-color-scheme: dark)" />
+	<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+	<meta name="theme-color" content="#0f160c" media="(prefers-color-scheme: dark)" />
 	<meta property="og:type" content="website" />
 </svelte:head>
 
@@ -32,100 +32,280 @@
 
 <a
 	href="#main"
-	class="bg-primary text-primary-foreground fixed top-3 left-3 z-100 -translate-y-[180%] rounded-md px-3 py-2 font-medium transition-transform focus:translate-y-0"
+	class="bg-primary text-primary-foreground fixed top-3 left-3 z-100 -translate-y-[180%] rounded-full px-3 py-2 font-medium transition-transform focus:translate-y-0"
 >
 	Skip to content
 </a>
 
-<header
-	class={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-300 ${hasScrolled ? 'border-border/40 bg-background/80 backdrop-blur-md' : 'border-transparent bg-transparent'}`}
->
-	<div
-		class="mx-auto flex min-h-16 w-[min(92%,90rem)] items-center justify-between gap-4"
-	>
-		<a
-			href="{base}/"
-			class="font-display text-foreground inline-flex items-center gap-2.5 text-lg font-bold tracking-tight no-underline"
-			aria-label="cogon.studio home"
-		>
-			<img
-				src="{base}/brand/cogon-studio-mark-transparent.png"
-				alt=""
-				width="32"
-				height="32"
-				class="size-8 object-contain"
-			/>
-			<span>cogon.studio</span>
-		</a>
-
-		<nav class="flex items-center gap-2" aria-label="Primary">
-			<Button
-				variant="ghost"
-				size="icon"
-				class="rounded-full"
-				onclick={toggleMode}
-				aria-label={mode.current === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-				title={mode.current === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-			>
-				{#if mode.current === 'dark'}
-					<SunIcon class="size-5" aria-hidden="true" />
-				{:else}
-					<MoonIcon class="size-5" aria-hidden="true" />
-				{/if}
-			</Button>
-			<Button
-				href="https://github.com/cogon-studio"
-				target="_blank"
-				rel="noopener noreferrer"
-				variant="ghost"
-				size="icon"
-				class="rounded-full"
-				aria-label="cogon.studio on GitHub"
-				title="cogon.studio on GitHub"
-			>
-				<GithubLogoIcon class="size-5" aria-hidden="true" />
-			</Button>
-			<Button
-				href="mailto:hello@cogon.studio?subject=Project%20inquiry"
-				size="sm"
-				class="rounded-full bg-[linear-gradient(135deg,var(--cogon-gold),color-mix(in_srgb,var(--cogon-gold)_72%,#a96d14))] text-[var(--cogon-night)] hover:brightness-105 dark:bg-[linear-gradient(135deg,var(--cogon-gold),color-mix(in_srgb,var(--cogon-gold)_82%,white))]"
-			>
-				<span class="hidden sm:inline">Start a project</span>
-				<span class="sm:hidden">Start</span>
-			</Button>
-		</nav>
+<div class={`chrome ${hasScrolled ? 'is-scrolled' : ''}`}>
+	<div class="announce">
+		<p>
+			Public work lives on GitHub. Early studio. No invented volumes.
+			<a href={brandGuidelines.contact.github}>View the org</a>
+		</p>
 	</div>
-</header>
+	<header>
+		<div class="chrome-bar">
+			<a href="{base}/" class="wordmark" aria-label="cogon.studio home">
+				<img
+					src="{base}/brand/cogon-studio-mark-transparent.png"
+					alt=""
+					width="36"
+					height="36"
+				/>
+				<span>
+					<strong>cogon</strong>
+					<small>studio</small>
+				</span>
+			</a>
+
+			<nav class="primary-nav" aria-label="Primary">
+				<a href="{base}/#practice">Practice</a>
+				<a href="{base}/#delivery">Delivery</a>
+				<a href="{base}/#standards">Standards</a>
+			</nav>
+
+			<div class="chrome-actions">
+				<Button
+					variant="ghost"
+					size="icon"
+					class="rounded-full"
+					onclick={toggleMode}
+					aria-label={mode.current === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+				>
+					{#if mode.current === 'dark'}
+						<SunIcon class="size-5" aria-hidden="true" />
+					{:else}
+						<MoonIcon class="size-5" aria-hidden="true" />
+					{/if}
+				</Button>
+				<Button
+					href={brandGuidelines.contact.github}
+					target="_blank"
+					rel="noopener noreferrer"
+					variant="ghost"
+					size="icon"
+					class="rounded-full"
+					aria-label="cogon.studio on GitHub"
+				>
+					<GithubLogoIcon class="size-5" aria-hidden="true" />
+				</Button>
+				<Button href="mailto:hello@cogon.studio?subject=Project%20inquiry" class="touch">
+					Get in touch
+				</Button>
+			</div>
+		</div>
+	</header>
+</div>
 
 <main id="main">
 	{@render children()}
 </main>
 
-<footer class="border-border mt-8 border-t">
-	<div
-		class="text-muted-foreground mx-auto flex w-[min(92%,90rem)] flex-col justify-between gap-3 py-8 text-sm sm:grid sm:grid-cols-3 sm:items-center"
-	>
-		<span class="inline-flex items-center gap-2">
-			<img
-				src="{base}/brand/cogon-studio-mark-transparent.png"
-				alt=""
-				width="24"
-				height="24"
-				class="size-6 object-contain"
-			/>
-			<span>cogon.studio · software development studio</span>
-		</span>
-		<span class="font-mono text-center text-xs tracking-wide">Build boldly. Grow reliably.</span>
-		<nav class="flex flex-wrap items-center gap-x-4 gap-y-2 sm:justify-end" aria-label="Footer">
-			<a class="text-foreground underline-offset-4 hover:underline" href="{base}/brand-identity">
-				Brand Identity
-			</a>
-			<a
-				class="text-foreground underline-offset-4 hover:underline"
-				href="mailto:{brandGuidelines.contact.email}"
-			>
-				{brandGuidelines.contact.email}
-			</a>
+<footer class="site-footer">
+	<div class="footer-grid">
+		<div>
+			<p class="footer-mark">cogon.studio</p>
+			<p>Product engineering infrastructure. Software that has to hold.</p>
+		</div>
+		<nav aria-label="Practice">
+			<h2>Practice</h2>
+			<a href="{base}/#practice">For founders</a>
+			<a href="{base}/#practice">For engineering leads</a>
+			<a href="{base}/#products">Decide, build, steady, hand off</a>
+		</nav>
+		<nav aria-label="Studio">
+			<h2>Studio</h2>
+			<a href="{base}/brand-identity">Brand standard</a>
+			<a href={brandGuidelines.contact.github}>GitHub</a>
+			<a href="mailto:{brandGuidelines.contact.email}">{brandGuidelines.contact.email}</a>
 		</nav>
 	</div>
+	<p class="footer-legal">© {new Date().getFullYear()} cogon.studio. No affiliation with Wise or Cyield.</p>
 </footer>
+
+<style>
+	.chrome {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+	}
+
+	.announce {
+		background: var(--cogon-inverse);
+		color: var(--cogon-on-inverse);
+		text-align: center;
+	}
+
+	.announce p {
+		margin: 0;
+		padding: 0.55rem 1rem;
+		font-size: 0.82rem;
+		font-weight: 600;
+	}
+
+	.announce a {
+		margin-left: 0.35rem;
+		color: var(--cogon-lime);
+		font-weight: 700;
+	}
+
+	header {
+		background: color-mix(in srgb, var(--background) 92%, transparent);
+		backdrop-filter: blur(16px);
+		border-bottom: 1px solid transparent;
+	}
+
+	.is-scrolled header {
+		border-bottom-color: var(--border);
+	}
+
+	.chrome-bar {
+		display: flex;
+		width: min(94%, 88rem);
+		min-height: 4.5rem;
+		margin-inline: auto;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.wordmark {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.7rem;
+		color: var(--foreground);
+		text-decoration: none;
+	}
+
+	.wordmark img {
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 0.7rem;
+		background: var(--cogon-lime);
+		object-fit: contain;
+		padding: 0.15rem;
+	}
+
+	.wordmark strong,
+	.wordmark small {
+		display: block;
+		font-family: var(--font-display);
+		line-height: 1;
+	}
+
+	.wordmark strong {
+		font-size: 1.05rem;
+		font-weight: 800;
+		letter-spacing: -0.04em;
+	}
+
+	.wordmark small {
+		margin-top: 0.12rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+	}
+
+	.primary-nav {
+		display: flex;
+		gap: 1.5rem;
+	}
+
+	.primary-nav a {
+		color: var(--foreground);
+		font-size: 0.95rem;
+		font-weight: 650;
+		text-decoration: none;
+	}
+
+	.primary-nav a:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
+	}
+
+	.chrome-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.35rem;
+	}
+
+	.chrome-actions :global(.touch) {
+		height: 2.5rem;
+		border-radius: 999px;
+		background: var(--cogon-inverse);
+		color: var(--cogon-on-inverse);
+		padding-inline: 1rem;
+		font-weight: 700;
+	}
+
+	:global(.dark) .chrome-actions :global(.touch) {
+		background: var(--cogon-lime);
+		color: var(--cogon-lime-ink);
+	}
+
+	.site-footer {
+		background: var(--cogon-inverse);
+		color: var(--cogon-on-inverse);
+		padding: 4rem 0 2rem;
+	}
+
+	.footer-grid {
+		display: grid;
+		width: min(94%, 88rem);
+		margin-inline: auto;
+		gap: 2rem;
+		grid-template-columns: 1.4fr 1fr 1fr;
+	}
+
+	.footer-mark {
+		margin: 0 0 0.6rem;
+		font-family: var(--font-display);
+		font-size: 1.6rem;
+		font-weight: 800;
+		letter-spacing: -0.04em;
+	}
+
+	.site-footer h2 {
+		margin: 0 0 0.8rem;
+		font-size: 0.75rem;
+		font-family: var(--font-mono);
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--cogon-lime);
+	}
+
+	.site-footer nav {
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+	}
+
+	.site-footer a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.site-footer a:hover {
+		color: var(--cogon-lime);
+	}
+
+	.footer-legal {
+		width: min(94%, 88rem);
+		margin: 2.5rem auto 0;
+		padding-top: 1.25rem;
+		border-top: 1px solid rgb(242 245 240 / 16%);
+		color: rgb(242 245 240 / 72%);
+		font-size: 0.8rem;
+	}
+
+	@media (max-width: 52rem) {
+		.primary-nav {
+			display: none;
+		}
+
+		.footer-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
