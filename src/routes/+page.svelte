@@ -15,23 +15,15 @@
 		{
 			name: 'Lean Photos',
 			platform: 'iOS',
-			detail:
-				'An Expo development client. Personal media stays on the device. Clear goes through Apple’s confirmation into Photos Recently Deleted. Lean Photos cannot restore after commit.',
-			facts: [
-				'iOS 26 glass',
-				'Photos permission',
-				'Keep / Clear',
-				'Screenshots and recordings',
-				'Undo, then commit',
-				'Stats and streak',
-				'Groups and scoring',
-				'Top 3',
-				'Month grid',
-				'On This Day',
-				'Memory',
-				'Unwanted',
-				'lean-vision'
+			features: [
+				'Personal media stays on the device',
+				'Camera Roll is Keep or Clear',
+				'Screenshots and recordings stay separate',
+				'Clear can be undone until commit',
+				'Commit sends items to Recently Deleted',
+				'Groups, scoring, Top 3, and lean-vision'
 			],
+			tags: ['iOS 26 glass', 'Photos permission', 'Keep / Clear', 'On This Day', 'lean-vision'],
 			image: `${base}/placeholders/lean-photos.svg`,
 			alt: 'iPhone frame in forest green showing Lean Photos: a camera-roll grid, Keep and Clear controls, a lime glass bar, and a pending Clear row. On-device only, no cloud icons, iOS 26, 16:10.',
 			href: 'https://leanphotos.cogon.studio',
@@ -40,9 +32,15 @@
 		{
 			name: 'Local Git',
 			platform: 'iOS 26',
-			detail:
-				'Links an On My iPhone folder to a GitHub repository you can push to. Files stay in place. Sync commits, integrates, and pushes without force-push or rebase. Conflicts wait for your choice.',
-			facts: ['On My iPhone', 'GitHub', 'Apple Shortcuts', 'Stable capture', 'Recovery state'],
+			features: [
+				'Links an On My iPhone folder',
+				'Syncs a repository you can push to',
+				'Commits, integrates, and pushes',
+				'No force-push or rebase',
+				'Conflicts wait for your choice',
+				'Same sync from Apple Shortcuts'
+			],
+			tags: ['On My iPhone', 'GitHub', 'Shortcuts', 'Stable capture', 'Recovery'],
 			image: `${base}/placeholders/local-git.svg`,
 			alt: 'iPhone frame showing Local Git: a linked folder name, a calm sync status, and two recovery choices labeled iPhone and GitHub. Forest and lime, no credentials on screen, 16:10.',
 			href: 'https://localgit.cogon.studio',
@@ -51,9 +49,14 @@
 		{
 			name: 'Podspace',
 			platform: 'Desktop',
-			detail:
-				'Turns websites into separate desktop windows. Apps sit in Spaces. Each instance uses a Profile, so accounts for the same site stay apart. A catalog is included, and any URL can be added.',
-			facts: ['Spaces', 'Profiles', 'Catalog', 'Custom URL'],
+			features: [
+				'Websites become separate windows',
+				'Apps live in Spaces',
+				'Profiles keep accounts apart',
+				'A catalog of web apps is included',
+				'Any URL can be added'
+			],
+			tags: ['Spaces', 'Profiles', 'Catalog', 'Custom URL', 'Multi-account'],
 			image: `${base}/placeholders/podspace.svg`,
 			alt: 'Desktop window of Podspace: several website apps as isolated windows grouped into a Space, with a profile switcher in lime on a forest frame. No real company logos, 16:10.',
 			href: 'https://podspace.cogon.studio',
@@ -191,12 +194,16 @@
 		{#each products as product}
 			<li>
 				<MediaFrame src={product.image} width={1200} height={750} alt={product.alt} />
-				<p class="platform">{product.platform}</p>
+				<p class="badge">{product.platform}</p>
 				<h3>{product.name}</h3>
-				<p>{product.detail}</p>
-				<ul>
-					{#each product.facts as fact}
-						<li>{fact}</li>
+				<ul class="features">
+					{#each product.features as feature}
+						<li>{feature}</li>
+					{/each}
+				</ul>
+				<ul class="tags">
+					{#each product.tags as tag}
+						<li>{tag}</li>
 					{/each}
 				</ul>
 				<button type="button" onclick={() => openProduct(product)}>Details</button>
@@ -207,9 +214,13 @@
 
 <dialog bind:this={dialog} class="product-dialog" aria-labelledby="product-dialog-title" onclose={() => (selected = null)}>
 	{#if selected}
-		<p class="platform">{selected.platform}</p>
+		<p class="badge">{selected.platform}</p>
 		<h2 id="product-dialog-title">{selected.name}</h2>
-		<p>{selected.detail}</p>
+		<ul class="features">
+			{#each selected.features as feature}
+				<li>{feature}</li>
+			{/each}
+		</ul>
 		<p>{selected.more}</p>
 		<div class="product-dialog__actions">
 			<Button href={selected.href} class="lime-cta">Open {selected.href.replace('https://', '')}</Button>
@@ -460,13 +471,20 @@
 		line-height: 1.45;
 	}
 
-	.platform {
+	.products .badge,
+	.product-dialog .badge {
+		display: inline-flex;
 		margin: 0.9rem 0 0;
+		border-radius: 999px;
+		background: var(--cogon-lime);
+		color: var(--cogon-lime-ink);
+		padding: 0.22rem 0.6rem;
 		font-family: var(--font-mono);
-		font-size: 0.72rem;
-		letter-spacing: 0.12em;
+		font-size: 0.68rem;
+		font-weight: 650;
+		letter-spacing: 0.08em;
+		line-height: 1.2;
 		text-transform: uppercase;
-		color: var(--cogon-muted);
 	}
 
 	.products :global(.media-frame) {
@@ -474,7 +492,24 @@
 		box-shadow: none;
 	}
 
-	.products ul ul {
+	.features {
+		margin: 0.7rem 0 0;
+		padding-left: 1.15rem;
+		color: var(--muted-foreground);
+		font-size: 0.95rem;
+		line-height: 1.45;
+		list-style: disc;
+	}
+
+	.features li + li {
+		margin-top: 0.25rem;
+	}
+
+	.features li::marker {
+		color: var(--cogon-ink);
+	}
+
+	.tags {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 0.4rem;
@@ -483,7 +518,7 @@
 		list-style: none;
 	}
 
-	.products ul ul li {
+	.tags li {
 		border-radius: 999px;
 		background: var(--cogon-sage);
 		padding: 0.28rem 0.55rem;
@@ -529,8 +564,17 @@
 		line-height: 1.5;
 	}
 
-	.product-dialog .platform {
-		color: rgb(242 245 240 / 62%);
+	.product-dialog .features {
+		margin-bottom: 0.9rem;
+		color: rgb(242 245 240 / 84%);
+	}
+
+	.product-dialog .features li::marker {
+		color: var(--cogon-lime);
+	}
+
+	.product-dialog .badge {
+		margin-top: 0;
 	}
 
 	.product-dialog__actions {

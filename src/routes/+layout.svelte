@@ -38,9 +38,6 @@
 </a>
 
 <div class={`chrome ${hasScrolled ? 'is-scrolled' : ''}`}>
-	<div class="announce">
-		<p>In-house software.</p>
-	</div>
 	<header>
 		<div class="chrome-bar">
 			<a href="{base}/" class="wordmark" aria-label="cogon.studio home">
@@ -112,25 +109,6 @@
 		position: sticky;
 		top: 0;
 		z-index: 50;
-	}
-
-	.announce {
-		background: var(--cogon-inverse);
-		color: var(--cogon-on-inverse);
-		text-align: center;
-	}
-
-	.announce p {
-		margin: 0;
-		padding: 0.55rem 1rem;
-		font-size: 0.82rem;
-		font-weight: 600;
-	}
-
-	.announce a {
-		margin-left: 0.35rem;
-		color: var(--cogon-lime);
-		font-weight: 700;
 	}
 
 	header {
