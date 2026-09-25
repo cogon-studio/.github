@@ -6,25 +6,21 @@
 export const brandGuidelines = {
 	version: '2.0',
 	brand: 'cogon.studio',
-	organizationType: 'Product engineering infrastructure',
-	tagline: 'Infrastructure for software that has to hold.',
+	organizationType: 'In-house software studio',
+	tagline: 'We build our own software.',
 	url: 'https://cogon.studio/',
 	contact: {
 		email: 'hello@cogon.studio',
 		github: 'https://github.com/cogon-studio'
 	},
-	audience:
-		'Founders and engineering leads who need a product to keep shipping after the first launch.',
-	positioning:
-		'A studio you plug into. We hold the decisions, the delivery, and the system your team inherits.',
-	promise:
-		'Named tradeoffs, visible quality, and software that still stands after we step back.',
+	audience: 'The studio itself. Software is designed, built, and run in-house.',
+	positioning: 'An in-house team. We do not take outsourced builds.',
+	promise: 'Design, build, and run our own software.',
 	personality: ['direct', 'reliable', 'precise', 'steady'] as const,
 	values: [
-		{ name: 'Decisions first', detail: 'Name the tradeoff before the first sprint spends it.' },
-		{ name: 'Visible quality', detail: 'Security, review, and follow-through show up every week.' },
-		{ name: 'Context that transfers', detail: 'The team inherits the system, not a black box.' },
-		{ name: 'A useful next step', detail: 'Every conversation ends with what is known and what is open.' }
+		{ name: 'In-house', detail: 'The same team designs, builds, and ships.' },
+		{ name: 'Our products', detail: 'We build the studio’s own software.' },
+		{ name: 'After launch', detail: 'We keep running what we ship.' }
 	],
 	voice: {
 		principles: ['clear', 'grounded', 'strong', 'specific'] as const,

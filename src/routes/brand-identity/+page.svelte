@@ -68,9 +68,7 @@
 		<p class="index">01 · Standard</p>
 		<h1>A system with weight.</h1>
 		<p class="intro">
-			cogon.studio is product engineering infrastructure. The visual language is forest ink and
-			lime, set in Plus Jakarta Sans. Marketing type is heavy on purpose. The quiet product-desk
-			version of this palette was too flat to carry a promise.
+			cogon.studio is an in-house software studio. Forest ink and lime, set in Plus Jakarta Sans.
 		</p>
 	</section>
 

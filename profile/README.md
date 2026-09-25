@@ -1,15 +1,6 @@
 # cogon.studio
 
-**Product engineering infrastructure.** Infrastructure for software that has to hold.
-
-Named decisions. Visible quality. A system your team can inherit.
-
-### What we hold
-
-- **Decisions first** — the tradeoff is written before the sprint spends it
-- **Visible quality** — review, security, and follow-through show up in the week
-- **Context that transfers** — the team inherits the system, not a black box
-- **A useful next step** — what is known, what is open, and what happens next
+**In-house software.** We design, build, and run our own products.
 
 ### Links
 

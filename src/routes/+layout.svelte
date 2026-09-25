@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { brandGuidelines } from '$lib/brand/guidelines.js';
-	import { GithubLogoIcon, MoonIcon, SunIcon } from 'phosphor-svelte';
+	import { MoonIcon, SunIcon } from 'phosphor-svelte';
 	import favicon from '$lib/assets/favicon.svg';
 
 	let { children } = $props();
@@ -39,10 +39,7 @@
 
 <div class={`chrome ${hasScrolled ? 'is-scrolled' : ''}`}>
 	<div class="announce">
-		<p>
-			Public work lives on GitHub. Early studio. No invented volumes.
-			<a href={brandGuidelines.contact.github}>View the org</a>
-		</p>
+		<p>In-house software.</p>
 	</div>
 	<header>
 		<div class="chrome-bar">
@@ -60,9 +57,9 @@
 			</a>
 
 			<nav class="primary-nav" aria-label="Primary">
-				<a href="{base}/#practice">Practice</a>
-				<a href="{base}/#delivery">Delivery</a>
-				<a href="{base}/#standards">Standards</a>
+				<a href="{base}/#proud">Proud of</a>
+				<a href="{base}/#products">Built</a>
+				<a href="{base}/#contact">Contact</a>
 			</nav>
 
 			<div class="chrome-actions">
@@ -78,17 +75,6 @@
 					{:else}
 						<MoonIcon class="size-5" aria-hidden="true" />
 					{/if}
-				</Button>
-				<Button
-					href={brandGuidelines.contact.github}
-					target="_blank"
-					rel="noopener noreferrer"
-					variant="ghost"
-					size="icon"
-					class="rounded-full"
-					aria-label="cogon.studio on GitHub"
-				>
-					<GithubLogoIcon class="size-5" aria-hidden="true" />
 				</Button>
 				<Button href="mailto:hello@cogon.studio?subject=Project%20inquiry" class="touch">
 					Get in touch
@@ -106,22 +92,19 @@
 	<div class="footer-grid">
 		<div>
 			<p class="footer-mark">cogon.studio</p>
-			<p>Product engineering infrastructure. Software that has to hold.</p>
+			<p>In-house software development.</p>
 		</div>
-		<nav aria-label="Practice">
-			<h2>Practice</h2>
-			<a href="{base}/#practice">For founders</a>
-			<a href="{base}/#practice">For engineering leads</a>
-			<a href="{base}/#products">Decide, build, steady, hand off</a>
-		</nav>
 		<nav aria-label="Studio">
 			<h2>Studio</h2>
-			<a href="{base}/brand-identity">Brand standard</a>
-			<a href={brandGuidelines.contact.github}>GitHub</a>
+			<a href="{base}/#proud">Proud of</a>
+			<a href="{base}/#products">Built</a>
+			<a href="{base}/#contact">Contact</a>
+			<a href="{base}/brand-identity">Brand</a>
+			<a href={brandGuidelines.contact.github} target="_blank" rel="noopener noreferrer">GitHub</a>
 			<a href="mailto:{brandGuidelines.contact.email}">{brandGuidelines.contact.email}</a>
 		</nav>
 	</div>
-	<p class="footer-legal">© {new Date().getFullYear()} cogon.studio. No affiliation with Wise or Cyield.</p>
+	<p class="footer-legal">© {new Date().getFullYear()} cogon.studio</p>
 </footer>
 
 <style>
@@ -255,7 +238,7 @@
 		width: min(94%, 88rem);
 		margin-inline: auto;
 		gap: 2rem;
-		grid-template-columns: 1.4fr 1fr 1fr;
+		grid-template-columns: 1.4fr 1fr;
 	}
 
 	.footer-mark {

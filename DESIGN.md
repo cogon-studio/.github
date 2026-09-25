@@ -14,14 +14,9 @@ Section order follows a platform landing, not a feature grid:
 
 1. Centered uppercase promise and a lime pill
 2. Wide hero loop with a pause control
-3. Holding-word marquee
-4. Four proof tiles (practices, not invented volumes)
-5. Two audience tracks with tall illustrations
-6. Product tabs: Decide, Build, Steady, Hand off
-7. Delivery split with a checklist
-8. Partnering row
-9. Standards band on forest
-10. Closing statement and three ways in
+3. Three short in-house points
+4. Three in-house products: Lean Photos, Local Git, Podspace
+5. Closing line
 
 ### Brand standard (`src/routes/brand-identity/+page.svelte`)
 
